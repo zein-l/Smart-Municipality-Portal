@@ -1,0 +1,157 @@
+
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب إفادة أو بيان</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+        .documents-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 8px;
+        }
+        .submit-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .submit-section button {
+            background: #0288d1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .submit-section button:hover {
+            background: #0277bd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">الرئيسية</a></li>
+                <li><a href="{{ url_for('document_request') }}">طلب المستندات</a></li>
+                <li><a href="{{ url_for('contact') }}">اتصل بنا</a></li>
+                <li><a href="{{ url_for('user_auth.login_register') }}">تسجيل الدخول</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h2>طلب إفادة أو بيان</h2>
+        <form action="{{ url_for('submit_document_request') }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="full-name">المستدعي</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">العنوان</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">رقم الهاتف</label>
+                <input type="text" id="phone-number" name="phone-number" required>
+            </div>
+            <div class="form-group">
+                <label for="document-type">نوع الإفادة المطلوبة</label>
+                <select id="document-type" name="document-type" required>
+                    <option value="">اختر نوع الإفادة</option>
+                    <option value="pre1964">إفادة إنجاز بناء قبل 1964</option>
+                    <option value="occupancy">إفادة إشغال</option>
+                    <option value="vacancy">إفادة شغور</option>
+                    <option value="ownershipTransfer">إفادة نقل ملكية</option>
+                    <option value="violation">إفادة إنجاز بناء مخالف</option>
+                    <option value="contents">إفادة محتويات</option>
+                    <option value="urbanPlanning">بيان لمسطح التخطيط</option>
+                </select>
+            </div>
+            <div id="document-uploads" class="documents-section"></div>
+            <div class="form-group">
+                <label for="notes">ملاحظات</label>
+                <textarea id="notes" name="notes"></textarea>
+            </div>
+            <div class="submit-section">
+                <button type="submit">إرسال الطلب</button>
+            </div>
+        </form>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 البلدية الذكية. جميع الحقوق محفوظة.</p>
+    </footer>
+    
+    <script>
+        document.getElementById('document-type').addEventListener('change', function() {
+            const uploadsDiv = document.getElementById('document-uploads');
+            uploadsDiv.innerHTML = '';
+            const selectedType = this.value;
+            
+            const requiredDocuments = {
+                pre1964: ['إفادة عقارية حديثة', 'مستندات تثبت إنجاز البناء قبل 1964'],
+                occupancy: ['سند التمليك أو عقد الإيجار'],
+                vacancy: ['سند التمليك'],
+                ownershipTransfer: ['سند التمليك'],
+                violation: ['إفادة عقارية شاملة', 'سند الملكية أو مستند بيع', 'نسخة إنذار أو مضبطة هدم', 'كروكي المخالفة', 'أي مستندات داعمة'],
+                contents: ['إفادة عقارية أو سند التمليك', 'رخصة إسكان أو خرائط الإفراز'],
+                urbanPlanning: ['سند الملكية أو إفادة عقارية']
+            };
+            
+            if (requiredDocuments[selectedType]) {
+                requiredDocuments[selectedType].forEach(doc => {
+                    let label = document.createElement('label');
+                    label.textContent = doc;
+                    
+                    let input = document.createElement('input');
+                    input.type = 'file';
+                    input.name = 'document-files';
+                    input.accept = '.pdf, .jpg, .png';
+                    input.required = true;
+                    
+                    uploadsDiv.appendChild(label);
+                    uploadsDiv.appendChild(input);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

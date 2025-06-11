@@ -1,0 +1,77 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tourist Information</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('document_request') }}">Document Request</a></li>
+        <li><a href="{{ url_for('council_purchases') }}">Council & Purchases</a></li>
+        <li><a href="{{ url_for('careers_volunteers') }}">Careers and Volunteers</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('user_auth.login_register') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- <section class="tourist-info-section">
+      <h2>Explore Our City</h2>
+      <p>Discover local attractions and find parking availability near you.</p>
+
+      <div class="attractions">
+        <h3>Local Attractions</h3>
+        <ul>
+          <li>
+            <h4>Historical Museum</h4>
+            <p>A deep dive into our city’s rich history.</p>
+            <span class="parking-status" data-status="Available">Parking Available</span>
+          </li>
+          <li>
+            <h4>Central Park</h4>
+            <p>Enjoy a relaxing walk through scenic landscapes.</p>
+            <span class="parking-status" data-status="Full">Parking Full</span>
+          </li>
+          <li>
+            <h4>Art Gallery</h4>
+            <p>Experience contemporary art from local artists.</p>
+            <span class="parking-status" data-status="Limited">Limited Parking</span>
+          </li>
+        </ul>
+      </div>
+    </section> -->
+
+    <section class="news">
+      <h2>Tourism Info Posts</h2>
+      {% if posts %}
+        {% for post in posts %}
+          <div class="card">
+            <h3>{{ post.title }}</h3>
+
+            {% if post.image_path %}
+              <img src="{{ '/' + post.image_path }}" 
+                   alt="Tourism Image" 
+                   style="max-width: 100%; height: auto; margin-top: 10px; border-radius: 10px;" />
+            {% endif %}
+
+            <p>{{ post.description }}</p>
+            <small>Posted on {{ post.created_at }}</small>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No tourism posts available yet.</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

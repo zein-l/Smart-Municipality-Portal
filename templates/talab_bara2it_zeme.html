@@ -1,0 +1,192 @@
+
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب براءة ذمة بلدية</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Tajawal', Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .form-section {
+            background: white;
+            width: 50%;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .payment-section {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        #credit-card-fields {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">الرئيسية</a></li>
+                <li><a href="{{ url_for('document_request') }}">طلب المستندات</a></li>
+                <li><a href="{{ url_for('contact') }}">اتصل بنا</a></li>
+                <li><a href="{{ url_for('user_auth.login_register') }}">تسجيل الدخول</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>طلب براءة ذمة بلدية</h2>
+            <form action="{{ url_for('submit_clearance_request') }}" method="POST" enctype="multipart/form-data">
+                
+                <label for="full-name">الاسم الكامل</label>
+                <input type="text" id="full-name" name="full-name" required>
+
+                <label for="phone-number">رقم الهاتف</label>
+                <input type="text" id="phone-number" name="phone-number" required>
+
+                <label for="address">العنوان</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="property-number">رقم العقار</label>
+                <input type="number" id="property-number" name="property-number" required>
+
+                <label for="zone">المنطقة</label>
+                <input type="text" id="zone" name="zone" required>
+
+                <h3>المستندات المطلوبة</h3>
+
+                <label for="ownership-deed">صورة عن سند الملكية أو مستند بيع</label>
+                <input type="file" id="ownership-deed" name="ownership-deed" accept=".pdf, .jpg, .png" required>
+
+                <label for="property-statement">إفادة عقارية شاملة لا يعود تاريخها لأكثر من ثلاثة أشهر</label>
+                <input type="file" id="property-statement" name="property-statement" accept=".pdf, .jpg, .png" required>
+
+                <label for="division-map">خريطة إفراز</label>
+                <input type="file" id="division-map" name="division-map" accept=".pdf, .jpg, .png">
+
+                <label for="legal-building-doc">مستند رسمي عن قانونية البناء</label>
+                <input type="file" id="legal-building-doc" name="legal-building-doc" accept=".pdf, .jpg, .png">
+
+                <div class="payment-section">
+                    <h3>رسوم الطوابع المالية</h3>
+
+                    <label for="payment-method">اختر طريقة الدفع</label>
+                    <select id="payment-method" name="payment-method" required>
+                        <option value="credit-card">بطاقة ائتمان</option>
+                        <option value="bank-transfer">تحويل بنكي</option>
+                    </select>
+
+                    <div id="credit-card-fields">
+                        <label for="card-number">رقم البطاقة الائتمانية</label>
+                        <input type="text" id="card-number" name="card-number" maxlength="16" placeholder="1234 5678 9012 3456">
+
+                        <label for="expiry-date">تاريخ انتهاء الصلاحية</label>
+                        <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY">
+
+                        <label for="cvc">CVC</label>
+                        <input type="text" id="cvc" name="cvc" maxlength="3" placeholder="123">
+                    </div>
+                </div>
+
+                <button type="submit">إرسال الطلب والدفع</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 بلدية المطيلب. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        document.getElementById('payment-method').addEventListener('change', function() {
+            const creditCardFields = document.getElementById('credit-card-fields');
+            if (this.value === 'credit-card') {
+                creditCardFields.style.display = 'block';
+            } else {
+                creditCardFields.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1109 @@
+/* General Styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #e3f2fd, #bbdefb);
+  color: #333;
+  line-height: 1.6;
+}
+/* Navbar */
+header {
+  background: #003366;
+  padding: 15px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific style for the login/register page header */
+body.login-register-page header h1 {
+  color: white;
+  text-align: center;
+  font-size: 2.5em;
+  margin: 0; /* Reset default margins if needed */
+  padding: 10px 0; /* Add some padding */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background: #0056b3;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  color: white; /* Keep text white */
+  border-radius: 0 0 50px 50px; /* Keep the rounded bottom */
+  position: relative; /* Needed for potential overlay positioning if you choose that method */
+  overflow: hidden; /* Ensures pseudo-elements or backgrounds stay contained */
+
+  /* --- NEW/MODIFIED Background Styles --- */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Dark overlay (adjust 0.5 transparency as needed) */
+              url('/static/images/background.jpg') /* Path to your image */
+              no-repeat /* Don't repeat the image */
+              center center / cover; /* Center the image and make it cover the area */
+  /* --- End of NEW/MODIFIED Background Styles --- */
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  /* Optional: Add text shadow for better readability */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto;
+   /* Optional: Add text shadow for better readability */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Quick Access */
+.quick-access {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.quick-access h2 {
+  margin-bottom: 25px;
+  color: #003366;
+  font-size: 2rem;
+}
+
+.buttons button {
+  margin: 10px;
+  padding: 15px 35px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.buttons button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* News Section */
+.news {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+/* Footer */
+footer {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+  font-size: 1rem;
+  border-radius: 50px 50px 0 0;
+}
+
+/* Auth Section specific styling */
+.auth-section {
+  padding: 40px 20px; /* Adjusted padding */
+  display: flex;
+  /* --- CHANGE THIS --- */
+  flex-direction: column; /* Stack children vertically */
+  /* --- END CHANGE --- */
+  align-items: center; /* Center items horizontally */
+  gap: 40px; /* Add gap between the login and register sections */
+}
+
+.form-wrapper {
+  /* This might not be strictly needed if auth-section is the direct parent */
+  /* but doesn't hurt */
+  display: flex;
+  flex-direction: column; /* Ensure forms inside also stack if needed */
+  align-items: center; /* Center forms horizontally */
+  gap: 40px; /* Gap between login/register form containers */
+  width: 100%; /* Take full width */
+  max-width: 450px; /* Limit max width of the forms area */
+}
+
+.form-container {
+  background: #ffffff;
+  padding: 30px 35px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  width: 100%; /* Make forms take full width of wrapper */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  /* Remove flex: 1 and min/max width from here if wrapper controls it */
+}
+
+
+.form-container:hover {
+  transform: translateY(-3px);
+}
+
+.form-container h2 {
+  margin-bottom: 25px;
+  color: #003366;
+  font-size: 1.8rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Labels align left */
+  width: 100%;
+  margin-bottom: 15px; /* Reduced margin */
+  text-align: left; /* Align text within the group left */
+}
+
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select, /* Added select here */
+.form-group textarea {
+  width: 100%; /* Take full width */
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+  box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.form-group input:focus,
+.form-group select:focus, /* Added select here */
+.form-group textarea:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 15px;
+  background: #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.btn:hover {
+  background: #004494;
+  transform: translateY(-2px);
+}
+
+.link {
+  margin-top: 15px;
+  display: block; /* Make it block for centered text-align */
+  text-align: center; /* Center the link */
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #003366;
+}
+
+/* Table Design */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table th {
+  background-color: #0056b3;
+  color: white;
+  font-weight: 600;
+  padding: 14px;
+}
+
+table td {
+  padding: 14px;
+  text-align: center;
+  font-size: 1rem;
+  border-bottom: 1px solid #eee; /* Add subtle row separators */
+}
+
+table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+table tr:hover {
+  background: #e3f2fd;
+}
+
+table td button {
+  padding: 10px 14px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+table td button:hover {
+  background-color: #1565c0;
+  transform: translateY(-2px);
+}
+
+/* Login/Register Button Component (Specific for forms inside containers) */
+.form-container form button {
+  /* Styles already defined by .btn, this selector might be redundant unless */
+  /* you need specific overrides for buttons inside these forms */
+   margin-top: 15px; /* Ensure space above button */
+}
+
+
+/* Document Request Section */
+.document-request-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.document-request-section h2 {
+  margin-bottom: 25px;
+  color: #003366;
+  font-size: 2rem;
+}
+
+/* Specific form styling for document requests if needed */
+.document-request-section form {
+  /* Inherits general form styles, add overrides if needed */
+}
+
+
+/* Tourist Info Section */
+.tourist-info-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.tourist-info-section h2 {
+  margin-bottom: 25px;
+  color: #003366;
+  font-size: 2rem;
+}
+
+.attractions { /* Container for attraction listings */
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.attractions h3 {
+  font-size: 1.6rem;
+  margin-top: 25px;
+  color: #004494;
+}
+
+
+.attractions ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.attractions li {
+  background-color: #ffffff;
+  padding: 18px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.attractions li:hover {
+  transform: translateY(-3px);
+}
+
+.attractions h4 {
+  margin: 0 0 6px;
+  font-weight: 700;
+  color: #0056b3;
+}
+
+.parking-status {
+  display: block;
+  font-weight: bold;
+  margin-top: 5px; /* Add some space */
+}
+
+.parking-status[data-status="Full"] {
+  color: red;
+}
+
+.parking-status[data-status="Limited"] {
+  color: orange;
+}
+
+.parking-status[data-status="Available"] {
+  color: green;
+}
+
+/* Career & Volunteer Section */
+.career-section, .volunteer-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.career-section h2, .volunteer-section h2 {
+   margin-bottom: 25px;
+   color: #003366;
+   font-size: 2rem;
+}
+
+
+.job-list, .volunteer-projects {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.job-posting, .project {
+  background-color: #ffffff;
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.job-posting:hover, .project:hover {
+  transform: translateY(-3px);
+}
+
+.job-posting h3, .project h3 {
+  font-size: 1.3em;
+  color: #004494;
+  margin-top: 0; /* Remove default top margin */
+  margin-bottom: 10px;
+}
+
+.apply-link, .project button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background-color: #1e88e5;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem; /* Match other buttons */
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.apply-link:hover, .project button:hover {
+  background-color: #1565c0;
+  transform: translateY(-2px);
+}
+
+/* Dashboard Section */
+.dashboard-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.dashboard-section h2 {
+   margin-bottom: 25px;
+   color: #003366;
+   font-size: 2rem;
+}
+
+
+/* Corrected Missing Styles */
+.form-section { /* General section containing a form */
+  padding: 60px 20px;
+  text-align: center;
+  background: #ffffff; /* Example background */
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 30px auto; /* Add margin */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Map Section */
+.map-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.map-section h2 {
+   margin-bottom: 25px;
+   color: #003366;
+   font-size: 2rem;
+}
+
+
+.map-container {
+  max-width: 850px;
+  margin: 0 auto;
+  height: 500px; /* Give map a defined height */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#map { /* Assuming your map div has id="map" */
+  height: 100%;
+  width: 100%;
+  border-radius: 8px; /* Match container */
+}
+
+.filters {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow filters to wrap */
+  gap: 15px;
+}
+
+.filters label {
+  font-weight: 600;
+  margin-right: 5px; /* Space between label and select */
+}
+
+.filters select {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s ease; /* Corrected transition property */
+  background-color: white; /* Ensure background */
+  font-size: 0.9rem;
+}
+
+.filters select:focus {
+  border-color: #0056b3;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact-section h2 {
+  margin-bottom: 20px;
+  color: #003366; /* Match theme */
+  font-size: 2rem;
+}
+
+.contact-section p { /* Style paragraph text if needed */
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+}
+
+
+/* Authentication Containers specific adjustments if needed */
+/* These already inherit from .form-container */
+.login-container {
+ /* Add specific styles if needed */
+}
+.register-container {
+ /* Add specific styles if needed */
+}
+
+
+/* Review Section */
+.review-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 10px;
+  max-width: 850px;
+  margin: 30px auto; /* Add margin */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-section h2 {
+   margin-bottom: 25px;
+   color: #003366;
+   font-size: 2rem;
+}
+
+
+/* Request Details (e.g., on review page) */
+.request-details {
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 8px;
+  max-width: 550px;
+  margin: 20px auto; /* Add margin */
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee; /* Add subtle border */
+}
+
+.request-details h3 { /* Style headings within details */
+  color: #004494;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.request-details p {
+  margin-bottom: 10px;
+}
+.request-details strong { /* Make labels bold */
+  margin-right: 5px;
+}
+
+
+/* List Styling (General) */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 8px 0;
+}
+
+/* Specific link styling if needed */
+ul li a {
+  /* Inherits general link styling, override if needed */
+}
+
+
+/* Action Buttons (e.g., Approve/Reject) */
+.action-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Increase gap */
+}
+
+.action-buttons button {
+  padding: 12px 20px;
+  font-size: 1rem; /* Match other buttons */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s; /* Added box-shadow */
+  font-weight: 600; /* Make text bold */
+}
+
+.action-buttons button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add shadow on hover */
+}
+
+.action-buttons .btn-approve { /* Use classes for specific buttons */
+  background-color: #4caf50; /* Green */
+}
+.action-buttons .btn-approve:hover {
+  background-color: #45a049;
+}
+
+.action-buttons .btn-reject { /* Use classes */
+  background-color: #f44336; /* Red */
+}
+.action-buttons .btn-reject:hover {
+  background-color: #d32f2f;
+}
+
+.action-buttons .btn-review { /* Use classes */
+  background-color: #ffa500; /* Orange */
+}
+.action-buttons .btn-review:hover {
+  background-color: #e69500;
+}
+
+/* General Section Padding */
+section {
+  padding: 50px 20px; /* Consistent padding */
+  text-align: center;
+}
+
+/* General H2 styling */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 25px; /* Consistent margin */
+  color: #003366; /* Consistent color */
+}
+
+/* General Container */
+.container { /* For centered content blocks */
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* General Card Style */
+.card {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* General Buttons (base style) */
+button, .btn {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  line-height: normal; /* Ensure text is centered vertically */
+}
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Specific Button Colors */
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+.btn-success {
+  background: #4caf50; /* Updated green */
+  color: white;
+}
+.btn-success:hover {
+  background: #45a049;
+}
+
+.btn-danger {
+  background: #f44336;
+  color: white;
+}
+.btn-danger:hover {
+  background: #d32f2f;
+}
+
+/* General Forms */
+/* form { */
+  /* Styles applied above within .form-container seem sufficient */
+  /* If you have forms outside .form-container, define base styles here */
+/* } */
+
+form label {
+  /* Styles applied above within .form-group */
+}
+
+form input, form select, form textarea {
+  /* Styles applied above within .form-group */
+   box-sizing: border-box; /* Crucial for consistent sizing */
+}
+
+/* General Tables */
+/* table { */
+  /* Styles applied above in .table-design section */
+/* } */
+
+/* Specific Sections Cleanup */
+.forgot-password-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px; /* Increased padding */
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.forgot-password-container h1 {
+  font-size: 1.8rem;
+  color: #003366; /* Match theme */
+  margin-top: 0;
+  margin-bottom: 25px; /* Increased margin */
+}
+
+.forgot-password-container .form-group { /* Style form groups inside */
+  margin-bottom: 20px;
+}
+
+.forgot-password-container .btn { /* Style button inside */
+  margin-top: 20px;
+}
+
+.forgot-password-container .alert { /* General alert styling */
+  font-size: 0.9rem;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.forgot-password-container .error,
+.forgot-password-container .alert-danger { /* Error specific */
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.forgot-password-container .success,
+.forgot-password-container .alert-success { /* Success specific */
+ color: #155724;
+ background-color: #d4edda;
+ border: 1px solid #c3e6cb;
+}
+
+
+/* Chatbot Styles */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.chatbot-button {
+  position: fixed; /* Keep fixed positioning */
+  bottom: 20px;
+  right: 20px;
+  width: 70px;  /* Slightly smaller */
+  height: 70px; /* Slightly smaller */
+  background: linear-gradient(135deg, #0078FF, #0056b3);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Adjusted shadow */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chatbot-button img {
+  width: 60%; /* Adjust icon size within button */
+  height: 60%;
+  object-fit: contain; /* Use contain to prevent distortion */
+  /* Removed border-radius as image might not be circular */
+}
+
+.chatbot-button:hover {
+  transform: scale(1.08); /* Slightly less aggressive hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.chatbot-window {
+  display: none; /* Start hidden */
+  flex-direction: column;
+  position: fixed;
+  bottom: 100px; /* Position above the button */
+  right: 20px;
+  width: 380px; /* Adjusted width */
+  height: 500px; /* Adjusted height */
+  min-width: 300px;
+  min-height: 350px;
+  max-width: 90vw;
+  max-height: 75vh; /* Limit height relative to viewport */
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25); /* Adjusted shadow */
+  resize: both; /* Allow resizing */
+  overflow: hidden; /* Hide overflow during resize */
+  /* padding-bottom needed if input isn't absolutely positioned */
+  /* padding-bottom: 55px; */
+  z-index: 999; /* Below button until shown */
+}
+
+.chatbot-window.show { /* Class added by JS to show */
+  display: flex;
+  z-index: 1001; /* Bring window above button when shown */
+}
+
+
+.chat-header {
+  background: linear-gradient(135deg, #0078FF, #0056b3);
+  color: white;
+  padding: 12px 15px; /* Adjusted padding */
+  font-size: 1.1rem; /* Adjusted size */
+  font-weight: 600; /* Adjusted weight */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  cursor: grab; /* Indicate draggable header */
+}
+.chat-header:active {
+  cursor: grabbing;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.4rem; /* Slightly larger */
+  cursor: pointer;
+  padding: 0 5px; /* Add padding for easier clicking */
+  line-height: 1; /* Ensure consistent height */
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ffdddd; /* Lighter red on hover */
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 15px; /* Increased padding */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add gap between messages */
+  background-color: #f9f9f9; /* Light background for chat area */
+}
+
+
+/* User & Bot Messages */
+.message { /* Base style for all messages */
+  padding: 10px 14px;
+  border-radius: 18px; /* More rounded */
+  margin: 2px 0;
+  max-width: 75%; /* Limit width */
+  line-height: 1.4;
+  word-wrap: break-word; /* Break long words */
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-message {
+  align-self: flex-end; /* Align right */
+  background: #0078FF;
+  color: white;
+  border-bottom-right-radius: 5px; /* Slight tail effect */
+}
+
+.bot-message {
+  align-self: flex-start; /* Align left */
+  background: #e9e9eb; /* Light grey */
+  color: #333; /* Dark text */
+  border-bottom-left-radius: 5px; /* Slight tail effect */
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px; /* Adjusted padding */
+  border-top: 1px solid #ddd;
+  background: white;
+  gap: 10px;
+  /* Removed absolute positioning - let it be part of flex flow */
+  /* position: absolute; */
+  /* bottom: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  box-sizing: border-box;
+}
+
+
+.chat-input input {
+  flex: 1; /* Take remaining space */
+  padding: 10px 12px; /* Adjusted padding */
+  font-size: 1rem; /* Standard font size */
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Pill shape */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.chat-input input:focus {
+  border-color: #0078FF;
+}
+
+.chat-input button {
+  padding: 10px 18px; /* Adjusted padding */
+  font-size: 1rem;
+  background: #0078FF;
+  color: white;
+  border: none;
+  border-radius: 20px; /* Pill shape */
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.chat-input button:hover {
+  background: #005FCC;
+}
+
+
+.language-selector { /* Container for the dropdown */
+    position: relative; /* Needed for absolute positioning of the menu */
+    display: inline-block; /* Or flex, depending on layout */
+    margin-left: auto; /* Push to the right if in a flex container */
+}
+
+.language-dropdown { /* The button itself */
+  padding: 8px 15px;
+  background-color: #1e88e5; /* Button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.language-dropdown:hover {
+  background-color: #1565c0; /* Darker blue on hover */
+}
+
+.dropdown-menu { /* The menu that appears */
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%; /* Position below the button */
+  right: 0; /* Align to the right of the container */
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 100; /* Ensure menu is above other nav items */
+  border-radius: 5px;
+  padding: 10px 0; /* Padding top/bottom */
+  min-width: 140px; /* Minimum width */
+  overflow: hidden; /* Hide overflow */
+}
+
+.dropdown-menu a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px; /* Padding within links */
+  font-size: 0.9rem;
+  white-space: nowrap; /* Prevent wrapping */
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f1f1f1; /* Highlight on hover */
+}
+
+/* Show menu on focus/hover of the container/button */
+/* Using focus-within is often more reliable for accessibility */
+.language-selector:focus-within .dropdown-menu,
+.language-selector:hover .dropdown-menu {
+  display: block;
+}
+
+
+#postList button { /* Style for delete button in posts */
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem; /* Smaller font */
+  font-weight: 500; /* Normal weight */
+}
+#postList button:hover {
+  background-color: #d32f2f;
+}
+
+/* --- Terms and Conditions Group - Specific Styles (Place at end of CSS) --- */
+.form-group.terms-group {
+  display: flex;        /* Use flexbox */
+  flex-direction: row;  /* Ensure items are in a row */
+  align-items: center;  /* VERTICALLY ALIGN ITEMS */
+  justify-content: flex-start; /* Align items to the start horizontally */
+  width: 100%;          /* Take full width */
+  margin-bottom: 15px;  /* Space below */
+  padding: 5px 0;       /* Add a little vertical padding */
+  gap: 8px;             /* Space between checkbox and label */
+  text-align: left;     /* Ensure text inside aligns left */
+}
+
+/* Explicitly style the checkbox within this group */
+.terms-group input[type="checkbox"] {
+  width: auto;          /* Don't force 100% width */
+  margin: 0;            /* Reset margins */
+  padding: 0;           /* Reset padding */
+  flex-shrink: 0;       /* Prevent shrinking */
+  /* Modern browsers align checkboxes well with text using flexbox align-items: center */
+  /* vertical-align: middle; /* Usually not needed with flex align-items */
+  appearance: checkbox; /* Ensure default appearance */
+  position: static;     /* Ensure no weird positioning */
+}
+
+/* Explicitly style the label within this group */
+.terms-group label {
+  font-weight: normal;  /* Override potential bold from .form-group label */
+  font-size: 0.9rem;
+  line-height: 1.3;     /* Adjust line height */
+  margin: 0;            /* Reset margin */
+  padding: 0;           /* Reset padding */
+  color: #333;         /* Ensure text color */
+  display: inline;      /* Treat label text naturally */
+  vertical-align: middle; /* Helps align text with checkbox baseline */
+}
+
+/* Style the link */
+.terms-group label a {
+  color: #0056b3;
+  text-decoration: underline;
+  vertical-align: baseline; /* Align link with surrounding text */
+}
+
+.terms-group label a:hover {
+  color: #003366;
+}

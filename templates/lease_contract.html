@@ -1,0 +1,163 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lease Contract Request Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .documents-section, .payment-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 8px;
+        }
+        .submit-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .submit-section button {
+            background: #0288d1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .submit-section button:hover {
+            background: #0277bd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="document.html">Document Request</a></li>
+                <li><a href="council-info.html">Council & Purchases</a></li>
+                <li><a href="careers.html">Careers and Volunteers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h2>Request to Register a Lease Contract</h2>
+        <form action="{{ url_for('submit_lease_contract') }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="text" id="phone-number" name="phone-number" required>
+            </div>
+            <div class="form-group">
+                <label for="parcel-number">Parcel Number</label>
+                <input type="number" id="parcel-number" name="parcel-number" required>
+            </div>
+            <div class="form-group">
+                <label for="unit-number">Unit Number</label>
+                <input type="number" id="unit-number" name="unit-number" required>
+            </div>
+            <div class="form-group">
+                <label for="cadastral-zone">Cadastral Zone</label>
+                <input type="text" id="cadastral-zone" name="cadastral-zone" required>
+            </div>
+
+            <div class="documents-section">
+                <h3>Required Documents</h3>
+                <div class="form-group">
+                    <label for="lease-contract">Lease Contract</label>
+                    <input type="file" id="lease-contract" name="lease-contract" required>
+                </div>
+                <div class="form-group">
+                    <label for="lease-contract-copy">Two Copies of the Lease Contract</label>
+                    <input type="file" id="lease-contract-copy" name="lease-contract-copy" required>
+                </div>
+                <div class="form-group">
+                    <label for="historical-statement">Comprehensive Historical Statement</label>
+                    <input type="file" id="historical-statement" name="historical-statement">
+                </div>
+                <div class="form-group">
+                    <label for="id-card-copy">ID Card Copy (if first-time registration)</label>
+                    <input type="file" id="id-card-copy" name="id-card-copy">
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <h3>Financial Stamp Payment</h3>
+                <div class="form-group">
+                    <label for="payment-method">Select Payment Method</label>
+                    <select id="payment-method" name="payment-method" required>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="bank-transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <div id="credit-card-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="card-number">Credit Card Number</label>
+                        <input type="text" id="card-number" name="card-number" maxlength="16">
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry-date">Expiration Date</label>
+                        <input type="text" id="expiry-date" name="expiry-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvc">CVC</label>
+                        <input type="text" id="cvc" name="cvc" maxlength="3">
+                    </div>
+                </div>
+            </div>
+            <div class="submit-section">
+                <button type="submit">Submit Request and Pay</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('payment-method').addEventListener('change', function() {
+            const creditCardFields = document.getElementById('credit-card-fields');
+            creditCardFields.style.display = this.value === 'credit-card' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

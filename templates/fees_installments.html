@@ -1,0 +1,149 @@
+
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب تقسيط الرسوم البلدية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="number"], input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        .installment-option {
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>طلب تقسيط الرسوم البلدية</h1>
+    <form action="{{ url_for('fees_installments') }}" method="POST" enctype="multipart/form-data">
+        <!-- Applicant Information -->
+        <label for="applicant-name">المستدعي:</label>
+        <input type="text" id="applicant-name" name="applicant-name" required>
+
+        <label for="address">العنوان:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="phone-number">رقم الهاتف:</label>
+        <input type="text" id="phone-number" name="phone-number" required>
+
+        <!-- Property Information -->
+        <label for="property-number">رقم العقار:</label>
+        <input type="text" id="property-number" name="property-number" required>
+
+        <label for="section-number">القسم رقم:</label>
+        <input type="text" id="section-number" name="section-number" required>
+
+        <label for="area">المنطقة العقارية:</label>
+        <input type="text" id="area" name="area" required>
+
+        <label for="total-fees">المبلغ الإجمالي للرسوم (ل.ل.):</label>
+        <input type="text" id="total-fees" name="total-fees" required>
+
+        <!-- Installment Options -->
+        <div class="installment-option">
+            <h3>خيارات التقسيط:</h3>
+            <label>
+                <input type="radio" name="installment-option" value="current-year" required>
+                خلال السنة المالية الحالية:
+            </label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>قيمة القسط</th>
+                        <th>تاريخ الدفع</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="current-year-amount-1"></td>
+                        <td><input type="text" name="current-year-date-1"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="current-year-amount-2"></td>
+                        <td><input type="text" name="current-year-date-2"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="current-year-amount-3"></td>
+                        <td><input type="text" name="current-year-date-3"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="installment-option">
+            <label>
+                <input type="radio" name="installment-option" value="four-installments" required>
+                على أربعة أقساط نصف سنوية:
+            </label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>قيمة القسط</th>
+                        <th>تاريخ الدفع</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="four-installments-amount-1"></td>
+                        <td><input type="text" name="four-installments-date-1"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="four-installments-amount-2"></td>
+                        <td><input type="text" name="four-installments-date-2"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="four-installments-amount-3"></td>
+                        <td><input type="text" name="four-installments-date-3"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="four-installments-amount-4"></td>
+                        <td><input type="text" name="four-installments-date-4"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Attached Documents -->
+        <h3>المستندات المرفقة:</h3>
+        <label for="fee-statement">نسخة عن بيان الرسوم المنظم من قبل البلدية:</label>
+        <input type="file" id="fee-statement" name="fee-statement" accept=".pdf, .jpg, .png" required>
+
+        <!-- Submit Button -->
+        <button type="submit">تقديم الطلب</button>
+    </form>
+</body>
+</html>

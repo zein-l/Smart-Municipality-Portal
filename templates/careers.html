@@ -1,0 +1,84 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers & Volunteer Opportunities</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="language-selector">
+                <button class="language-dropdown" id="languageDropdownButton">
+                    Select Language
+                </button>
+                <div class="dropdown-menu">
+                    <a href="?lang=en" {% if lang == 'en' %}style="font-weight: bold;"{% endif %}>🇬🇧 English</a>
+                    <a href="?lang=ar" {% if lang == 'ar' %}style="font-weight: bold;"{% endif %}>🇦🇪 العربية</a>
+                    <a href="?lang=fr" {% if lang == 'fr' %}style="font-weight: bold;"{% endif %}>🇫🇷 Français</a>
+                    <a href="?lang=hy" {% if lang == 'hy' %}style="font-weight: bold;"{% endif %}>🇦🇲 Հայերեն</a>
+                </div>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('home', lang=request.args.get('lang')) }}">Home</a></li>
+                <li><a href="{{ url_for('document_request', lang=request.args.get('lang')) }}">Document Request</a></li>
+                <li><a href="{{ url_for('council_purchases') }}">Council & Purchases</a></li>
+                <li><a href="{{ url_for('careers_volunteers', lang=request.args.get('lang')) }}">Careers and Volunteers</a></li>
+                <li><a href="{{ url_for('contact', lang=request.args.get('lang')) }}">Contact</a></li>
+                <li><a href="{{ url_for('user_auth.login_register') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="career-section">
+            <h2>Municipal Job Vacancies</h2>
+            <div class="job-list">
+                <div class="job-posting">
+                    <h3>Administrative Assistant</h3>
+                    <p>Assist with day-to-day administrative tasks within the municipality. Requires a bachelor's degree in any field.</p>
+                    <a href="apply.html" class="apply-link">Apply Now</a>
+                </div>
+                
+                <div class="job-posting">
+                    <h3>Environmental Inspector</h3>
+                    <p>Conduct environmental assessments and ensure municipal compliance with environmental regulations.</p>
+                    <a href="apply.html" class="apply-link">Apply Now</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="volunteer-section">
+            <h2>Volunteer Opportunities</h2>
+            <p>Get involved with your community by joining one of our ongoing projects!</p>
+
+            <div class="volunteer-projects">
+                <div class="project">
+                    <h3>Park Cleanup Initiative</h3>
+                    <p>Help keep our parks clean and green! We need volunteers for a cleanup drive in all major city parks.</p>
+                    <button onclick="joinProject('Park Cleanup Initiative')">Join as Volunteer</button>
+                </div>
+
+                <div class="project">
+                    <h3>Senior Assistance Program</h3>
+                    <p>Assist senior citizens with everyday tasks. Volunteers needed for community outreach and support.</p>
+                    <button onclick="joinProject('Senior Assistance Program')">Join as Volunteer</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function joinProject(projectName) {
+            alert("Thank you for joining the " + projectName + " project!");
+        }
+    </script>
+</body>
+</html>

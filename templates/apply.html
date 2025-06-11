@@ -1,0 +1,111 @@
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Municipal Services</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="document.html">Document Request</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Apply for Municipal Services</h2>
+            <p>Select the type of service you wish to apply for and submit your application.</p>
+            <form id="application-form" action="/submit_application" method="POST" enctype="multipart/form-data">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="service_type">Select Service Type:</label>
+                <select id="service_type" name="service_type" required>
+                    <option value="business_permit">Business Permit</option>
+                    <option value="event_approval">Event Approval</option>
+                    <option value="building_permit">Building Permit</option>
+                    <option value="lease_contract">Lease Contract Registration</option>
+                </select>
+
+                <label for="document">Upload Supporting Document (PDF, JPG, PNG):</label>
+                <input type="file" id="document" name="document" accept=".pdf,.jpg,.png" required>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+
+<!-- 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="careers.html">Careers & Volunteer Info</a></li>
+                <li><a href="council-meetings.html">Council Meetings</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="application-section">
+            <h2>Job Application</h2>
+            <p>Please fill out the form below to apply for the position.</p>
+
+            <form action="/submit-application" method="POST" enctype="multipart/form-data">
+                <label for="job-title">Job Title</label>
+                <input type="text" id="job-title" name="job-title" value="Administrative Assistant" readonly>
+
+                <label for="applicant-name">Full Name</label>
+                <input type="text" id="applicant-name" name="applicant-name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="resume">Upload Resume (PDF only)</label>
+                <input type="file" id="resume" name="resume" accept=".pdf" required>
+
+                <label for="cover-letter">Cover Letter (optional)</label>
+                <textarea id="cover-letter" name="cover-letter" rows="4" placeholder="Write a brief cover letter..."></textarea>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+ -->

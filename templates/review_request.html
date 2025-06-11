@@ -1,0 +1,52 @@
+
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مراجعة الطلب</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>مراجعة الطلب</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>تفاصيل الطلب</h2>
+            <ul>
+                {% for field, value in request_data.items() %}
+                    {% if value and field not in ["id", "submitted_at", "status", "lease_contract_path", "lease_contract_copy_path", "historical_statement_path", "id_card_copy_path"] %}  {# Exclude unnecessary fields #}
+                        <li><strong>{{ field.replace("_", " ").title() }}:</strong> {{ value }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <h3>الملفات المرفقة</h3>
+            <ul>
+                {% for file in files %}
+                    <li>
+                        <a href="{{ file.file_url }}" target="_blank">{{ file.file_name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <h3>إضافة ملاحظات</h3>
+            <form method="POST">
+
+                <form method="POST">
+                  <label for="feedback">ملاحظات</label>
+                  <textarea id="feedback" name="feedback"></textarea>
+              
+                  <button type="submit" name="status" value="Approved">الموافقة</button>
+                  <button type="submit" name="status" value="Rejected" onclick="return confirm('هل أنت متأكد أنك تريد رفض هذا الطلب؟ سيتم حذفه نهائياً.')">
+                      رفض الطلب
+                  </button>
+              </form>
+
+                <button type="submit">إرسال التحديث</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,290 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Municipality - Login/Register</title>
+  <!-- Link to the external stylesheet -->
+  <link rel="stylesheet" href="/static/style.css" />
+  <script>
+    async function handleLogin(event) {
+      event.preventDefault(); // Prevent form submission reload
+
+      const email = document.getElementById("login_email").value;
+      const password = document.getElementById("login_password").value;
+
+      if (!email || !password) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      try {
+        const response = await fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+        localStorage.setItem("jwt_token", data.token); // Save JWT token
+        // Redirect based on the user's role
+        if (data.role === "Municipality Employee") {
+          window.location.href = "/municipality_dashboard";
+        } else {
+          window.location.href = "/home";
+        }
+      } else {
+        alert(data.error || "Login failed!");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again.");
+    }
+  }
+
+    async function handleRegister(event) {
+      event.preventDefault(); // Prevent form submission reload
+
+      // --- Check if terms checkbox is checked ---
+      const termsCheckbox = document.getElementById("terms");
+      if (!termsCheckbox.checked) {
+        alert("Please agree to the Terms and Conditions before registering.");
+        return; // Stop the function if terms are not agreed to
+      }
+      // --- End of Check ---
+
+      const username     = document.getElementById("username").value;
+      const password     = document.getElementById("password").value;
+      const full_name    = document.getElementById("full_name").value;
+      const email        = document.getElementById("email").value;
+      const country_code = document.getElementById("country_code").value;
+      const phone_number = document.getElementById("phone_number").value;
+      const address      = document.getElementById("address").value;
+      const role         = document.getElementById("role").value;
+      const municipality = document.getElementById("municipality").value;
+
+
+      if (!username || !password || !full_name || !email || !phone_number || !address  || !role || !municipality) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const data = {
+        username,
+        password,
+        full_name,
+        email,
+        phone_number: country_code + phone_number,
+        address,
+        role,
+        municipality
+      };
+
+      console.log("🔍 Sending Registration Data:", JSON.stringify(data));
+
+      try {
+        const response = await fetch("/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        const Responsedata = await response.json();
+        console.log("✅ Server Response:", Responsedata);
+
+        if (response.ok) {
+          // Show a custom popup message for successful registration
+          const popup = document.getElementById("popup");
+          popup.style.display = "block";
+          setTimeout(() => {
+          popup.style.display = "none";
+          window.location.href = "/login"; // Redirect to login after showing popup
+
+          }, 2000); // Show popup for 2 seconds
+        } else {
+          alert(Responsedata.error || "Registration failed!");
+        }
+      } catch (error) {
+        console.error("Error during registration:", error);
+        alert("An error occurred. Please try again.");
+      }
+    }
+
+    async function loadMunicipalities() {
+      try {
+          const response = await fetch("/get_municipalities");
+
+          if (!response.ok) {
+              throw new Error(`Server error: ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log("Municipalities received:", data); // Debugging log
+
+          if (!Array.isArray(data)) {
+              throw new Error("Invalid response format: Expected an array");
+          }
+
+          const select = document.getElementById("municipality");
+          if (!select) {
+              console.error("❌ Municipality dropdown not found!");
+              return;
+          }
+
+          select.innerHTML = "<option value=''>Select your municipality</option>"; // Clear existing options and add default
+
+          // Sort municipalities alphabetically by name
+          data.sort((a, b) => a.name.localeCompare(b.name));
+
+          // Populate dropdown
+          data.forEach(mun => {
+              const option = document.createElement("option");
+              option.value = mun.id;
+              option.textContent = mun.name;
+              select.appendChild(option);
+          });
+
+          console.log("✅ Municipalities dropdown populated successfully");
+
+      } catch (error) {
+          console.error("Failed to load municipalities:", error);
+          // Optionally display an error message to the user
+      }
+    }
+
+    function filterMunicipalities() {
+        // This function might not be needed if using a standard searchable dropdown library,
+        // but here's a basic implementation for filtering standard <select> options.
+        const searchInput = document.getElementById("municipality_search").value.toLowerCase();
+        const municipalitySelect = document.getElementById("municipality");
+        const options = municipalitySelect.options; // Use .options collection
+
+        for (let i = 0; i < options.length; i++) {
+          if (options[i].value === "") continue; // Always show the default "Select..." option
+          let txtValue = options[i].textContent || options[i].innerText;
+          options[i].style.display = txtValue.toLowerCase().includes(searchInput) ? "" : "none";
+        }
+      }
+
+    // Load municipalities when the page is ready
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log("Page loaded. Running loadMunicipalities...");
+      loadMunicipalities();
+    });
+
+  </script>
+  <!-- Removed internal style block as styles are now in style.css -->
+</head>
+<body>
+  <header>
+    <!-- Only a big title is displayed -->
+    <h1>Smart Municipality</h1>
+  </header>
+
+  <!-- Popup for successful registration -->
+  <div id="popup" style="display: none; position: fixed; top: 20%; left: 50%; transform: translateX(-50%); background: white; padding: 20px; border: 2px solid #4caf50; color: #4caf50; font-size: 20px; z-index: 1000; text-align: center; border-radius: 5px;">Registration successful! Redirecting to login...</div>
+
+  <main>
+    <section class="auth-section">
+      <div class="form-wrapper">
+        <!-- Login Form -->
+        <div class="form-container login-container">
+          <h2>Login</h2>
+          <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+              <label for="login_email">Email</label>
+              <input type="email" id="login_email" name="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+              <label for="login_password">Password</label>
+              <input type="password" id="login_password" name="password" placeholder="Enter your password" required />
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <a href="/forgot_password" class="link">Forgot Password?</a>
+          </form>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="form-container register-container">
+          <h2>Register</h2>
+          <form onsubmit="handleRegister(event)">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" placeholder="Choose a username" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Choose a password" required
+                     pattern="(?=.*[A-Z])(?=.*[!@#$&*]).{8,}"
+                     title="Password must be at least 8 characters long, contain at least one uppercase letter and one special character." />
+            </div>
+            <div class="form-group">
+              <label for="full_name">Full Name</label>
+              <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+              <label for="country_code">Country Code</label>
+              <select id="country_code" name="country_code" required>
+                <option value="+961">+961 (Lebanon)</option>
+                <!-- You can add other country codes if needed -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="phone_number">Phone Number</label>
+              <input type="text" id="phone_number" name="phone_number" placeholder="Enter your phone number (e.g., 70123456)" required
+                     pattern="\d{8}" title="Phone number must be 8 digits." />
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select id="role" name="role" required>
+                <option value="">Select your role</option>
+                <option value="Citizen">Citizen</option>
+                <option value="Municipality Employee">Municipality Employee</option>
+              </select>
+            </div>
+            <div class="form-group" id="municipality_field">
+              <label for="municipality">Municipality</label>
+              <!-- Optional: Add a search input if you want basic filtering -->
+              <!-- <input type="text" id="municipality_search" onkeyup="filterMunicipalities()" placeholder="Search for municipality.."> -->
+              <select id="municipality" name="municipality" required>
+                <option value="">Loading municipalities...</option> <!-- Placeholder while loading -->
+              </select>
+            </div>
+
+            <!-- Terms and Conditions Checkbox -->
+            <div class="form-group terms-group">
+              <!-- Label comes FIRST -->
+              <label for="terms">
+                I agree to the
+                <a href="/terms" target="_blank">Terms and Conditions</a>
+              </label>
+              <!-- Checkbox comes SECOND -->
+              <input type="checkbox" id="terms" name="terms" required>
+            </div>
+            <!-- End Terms and Conditions Checkbox -->
+
+            <button type="submit" class="btn">Register</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Smart Municipality. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

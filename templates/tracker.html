@@ -1,0 +1,91 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Request</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-light">
+
+    <header>
+        <nav>
+
+            <div class="language-selector">
+                <button class="language-dropdown" id="languageDropdownButton">
+                    Select Language
+                </button>
+                <div class="dropdown-menu">
+                    <a href="?lang=en" {% if lang == 'en' %}style="font-weight: bold;"{% endif %}>🇬🇧 English</a>
+                    <a href="?lang=ar" {% if lang == 'ar' %}style="font-weight: bold;"{% endif %}>🇦🇪 العربية</a>
+                    <a href="?lang=fr" {% if lang == 'fr' %}style="font-weight: bold;"{% endif %}>🇫🇷 Français</a>
+                    <a href="?lang=hy" {% if lang == 'hy' %}style="font-weight: bold;"{% endif %}>🇦🇲 Հայերեն</a>
+                </div>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('home', lang=request.args.get('lang')) }}">Home</a></li>
+                <li><a href="{{ url_for('document_request', lang=request.args.get('lang')) }}">Document Request</a></li>
+                <li><a href="{{ url_for('council_purchases') }}">Council & Purchases</a></li>
+                <li><a href="{{ url_for('careers_volunteers', lang=request.args.get('lang')) }}">Careers and Volunteers</a></li>
+                <li><a href="{{ url_for('contact', lang=request.args.get('lang')) }}">Contact</a></li>
+                <li><a href="#" onclick="logoutAndClear()">Logout</a></li>
+            </ul>
+
+            
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="mb-5">
+            <h2 class="mb-4">Track Your Submitted Requests</h2>
+            <div id="request-list" class="row row-cols-1 row-cols-md-2 g-4">
+                <!-- Requests will be inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/user/my_requests')
+                .then(res => res.json())
+                .then(data => {
+                    const container = document.getElementById('request-list');
+
+                    if (data.requests && data.requests.length > 0) {
+                        data.requests.forEach(req => {
+                            const col = document.createElement('div');
+                            col.className = 'col';
+
+                            col.innerHTML = `
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Request #${req.id}</h5>
+                                        <p><strong>Business Name:</strong> ${req.business_name}</p>
+                                        <p><strong>Status:</strong> 
+                                            <span class="badge ${req.status === 'Approved' ? 'bg-success' : req.status === 'Rejected' ? 'bg-danger' : 'bg-warning'}">
+                                                ${req.status}
+                                            </span>
+                                        </p>
+                                        <p><strong>Submitted At:</strong> ${req.submitted_at}</p>
+                                    </div>
+                                </div>
+                            `;
+                            container.appendChild(col);
+                        });
+                    } else {
+                        container.innerHTML = `<p class="text-muted">You have not submitted any requests yet.</p>`;
+                    }
+                })
+                .catch(err => {
+                    console.error('Failed to fetch requests:', err);
+                    document.getElementById('request-list').innerHTML = `<p class="text-danger">Unable to load requests.</p>`;
+                });
+        });
+    </script>
+
+</body>
+</html>

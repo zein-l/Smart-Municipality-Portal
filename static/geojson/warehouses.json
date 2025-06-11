@@ -1,0 +1,133 @@
+[
+    {
+      "name": "WV Akkar",
+      "location": "Tleil",
+      "lat": 34.598896,
+      "long": 36.151703,
+      "cp": "World Vision",
+      "type": "CP Warehouses",
+      "governorate": "Akkar",
+      "district": "Akkar"
+    },
+    {
+      "name": "SHEILD Saida",
+      "location": "Ghazieh",
+      "lat": 33.513083,
+      "long": 35.354833,
+      "cp": "SHEILD",
+      "type": "CP Warehouses",
+      "governorate": "South",
+      "district": "Saida"
+    },
+    {
+      "name": "ANERA Bekaa",
+      "location": "Taanayel",
+      "lat": 33.781778,
+      "long": 35.875444,
+      "cp": "ANERA",
+      "type": "CP Warehouses",
+      "governorate": "Bekaa",
+      "district": "Zahle"
+    },
+    {
+      "name": "WV Baalbek",
+      "location": "Majdaloun",
+      "lat": 33.979995,
+      "long": 36.145925,
+      "cp": "WVI",
+      "type": "CP Warehouses",
+      "governorate": "Baalbek-El Hermel",
+      "district": "Baalbek"
+    },
+    {
+      "name": "WFP Beirut",
+      "location": "Dekwane",
+      "lat": 33.87188,
+      "long": 35.553971,
+      "cp": "WFP WH",
+      "type": "WFP Warehouses",
+      "governorate": "Mount Lebanon",
+      "district": "El Meten"
+    },
+    {
+      "name": "WFP Koura",
+      "location": "Kousba",
+      "lat": 34.300314,
+      "long": 35.849635,
+      "cp": "WFP WH",
+      "type": "WFP Warehouses",
+      "governorate": "North",
+      "district": "El Koura"
+    },
+    {
+      "name": "Sinno",
+      "location": "Bchemoun",
+      "lat": 33.79655171,
+      "long": 35.49954663,
+      "cp": "Sinno WH",
+      "type": "Suppliers",
+      "governorate": "Mount Lebanon",
+      "district": "Aley"
+    },
+    {
+      "name": "Khawaja",
+      "location": "Zgharta",
+      "lat": 34.39897339,
+      "long": 35.91538482,
+      "cp": "Khawaja WH",
+      "type": "Suppliers",
+      "governorate": "North",
+      "district": "Zgharta"
+    },
+    {
+      "name": "Harb Bekaa",
+      "location": "Chtaura",
+      "lat": 33.79314,
+      "long": 35.85781,
+      "cp": "Harb WH",
+      "type": "Suppliers",
+      "governorate": "Bekaa",
+      "district": "Zahle"
+    },
+    {
+      "name": "Al Wadi",
+      "location": "Tripoli port",
+      "lat": 34.4515,
+      "long": 35.827583,
+      "cp": "Al Wadi WH",
+      "type": "Suppliers",
+      "governorate": "North",
+      "district": "Tripoli"
+    },
+    {
+      "name": "ACTC",
+      "location": "Anfeh",
+      "lat": 34.3493975,
+      "long": 35.746526,
+      "cp": "ACTC WH",
+      "type": "Suppliers",
+      "governorate": "North",
+      "district": "El Koura"
+    },
+    {
+      "name": "Al Jamal",
+      "location": "Berqayel",
+      "lat": 34.5223051,
+      "long": 36.0180822,
+      "cp": "Al Jamal WH",
+      "type": "Suppliers",
+      "governorate": "Akkar",
+      "district": "Akkar"
+    },
+    {
+      "name": "Daaboul",
+      "location": "Anfeh",
+      "lat": 34.35087615,
+      "long": 35.73120552,
+      "cp": "Daaboul WH",
+      "type": "Suppliers",
+      "governorate": "North",
+      "district": "El Koura"
+    }
+  ]
+  

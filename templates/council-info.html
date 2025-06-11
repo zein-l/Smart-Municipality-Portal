@@ -1,0 +1,103 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Municipal Council Meetings & Purchases</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="language-selector">
+        <button class="language-dropdown" id="languageDropdownButton">
+            Select Language
+        </button>
+        <div class="dropdown-menu">
+            <a href="?lang=en" {% if lang == 'en' %}style="font-weight: bold;"{% endif %}>🇬🇧 English</a>
+            <a href="?lang=ar" {% if lang == 'ar' %}style="font-weight: bold;"{% endif %}>🇦🇪 العربية</a>
+            <a href="?lang=fr" {% if lang == 'fr' %}style="font-weight: bold;"{% endif %}>🇫🇷 Français</a>
+            <a href="?lang=hy" {% if lang == 'hy' %}style="font-weight: bold;"{% endif %}>🇦🇲 Հայերեն</a>
+        </div>
+    </div>
+      <ul>
+        <li><a href="{{ url_for('home', lang=request.args.get('lang')) }}">Home</a></li>
+        <li><a href="{{ url_for('document_request', lang=request.args.get('lang')) }}">Document Request</a></li>
+        <li><a href="{{ url_for('council_purchases') }}">Council & Purchases</a></li>
+        <li><a href="{{ url_for('careers_volunteers', lang=request.args.get('lang')) }}">Careers and Volunteers</a></li>
+        <li><a href="{{ url_for('contact', lang=request.args.get('lang')) }}">Contact</a></li>
+        <li><a href="{{ url_for('user_auth.login_register') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="council-section">
+      <h2>Municipal Council Meetings</h2>
+      <p>Stay informed about recent and upcoming council meetings and decisions.</p>
+
+      <div class="meeting-list">
+        <div class="meeting">
+          <h3>Upcoming Meeting: November 5, 2024</h3>
+          <p><strong>Agenda:</strong></p>
+          <ul>
+            <li>Review new job openings within the municipality.</li>
+            <li>Discuss budget allocations for the upcoming year.</li>
+            <li>Approve funding for public park renovations.</li>
+          </ul>
+        </div>
+
+        <div class="meeting">
+          <h3>Previous Meeting: October 10, 2024</h3>
+          <p><strong>Summary:</strong></p>
+          <ul>
+            <li>Decisions made on public health initiatives and their funding.</li>
+            <li>Approval of the hiring process for new administrative staff.</li>
+            <li>Assessment of the latest public transportation improvements.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="purchases-section">
+        <h2>Municipality Purchases</h2>
+        <p>View recent and upcoming purchases by the municipality for improved transparency.</p>
+      
+        <div class="purchase-list">
+            {% if purchases %}
+              {% for p in purchases %}
+                <div class="purchase-item">
+                  <h3>{{ p.title }}</h3>
+                  <p>Date: {{ p.purchase_date }}</p>
+                  <p>Amount: ${{ '{:,}'.format(p.amount | int) }}</p>
+                  <p>Vendor: {{ p.vendor }}</p>
+                </div>
+              {% endfor %}
+            {% else %}
+              <p>No purchases found.</p>
+            {% endif %}
+          </div>
+          
+      </section>
+      
+    <section class="news">
+      <h2>Municipal Info Posts</h2>
+      {% if posts %}
+        {% for post in posts %}
+          <div class="card">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.description }}</p>
+            <small>Posted on {{ post.created_at }}</small>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No municipal info posts available yet.</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

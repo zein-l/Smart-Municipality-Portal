@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - Smart Municipality</title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- Link your main CSS -->
+    <style>
+        /* Basic styling for readability */
+        body {
+            font-family: 'Poppins', sans-serif; /* Match your main font */
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa; /* Light background */
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto; /* Center the content */
+            padding: 30px;
+            background-color: #ffffff; /* White background for content */
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #003366; /* Match your theme */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+         h2 {
+            color: #0056b3; /* Match your theme */
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul { /* Basic styling for lists within terms */
+            list-style-type: disc; /* Use standard bullets */
+            margin-left: 20px; /* Indent list */
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .last-updated {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+        /* Style for the Go Back button */
+        .go-back-button {
+            display: block; /* Make it block level */
+            width: fit-content; /* Adjust width to content */
+            margin: 40px auto 20px auto; /* Center it with top/bottom margin */
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background-color: #0056b3; /* Use theme color */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .go-back-button:hover {
+             background-color: #004494; /* Darker on hover */
+             transform: translateY(-2px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Terms and Conditions</h1>
+        <p class="last-updated">Last updated: December 5, 2024</p> <!-- UPDATE THIS DATE -->
+
+        <h2>1. Introduction</h2>
+        <p>Welcome to the Smart Municipality platform! These terms and conditions outline the rules and regulations for the use of our platform and services provided by [Your Municipality Name or Project Name]. By accessing this platform, we assume you accept these terms and conditions. Do not continue to use Smart Municipality if you do not agree to take all of the terms and conditions stated on this page.</p>
+
+        <h2>2. Acceptance of Terms</h2>
+        <p>By registering for an account, accessing, or using the Smart Municipality platform, you agree to be bound by these Terms and Conditions and our Privacy Policy. If you disagree with any part of the terms, then you may not access the service.</p>
+
+        <h2>3. User Accounts</h2>
+        <p>When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.</p>
+        <p>You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password. You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.</p>
+
+        <h2>4. Use of the Platform</h2>
+        <p>You agree to use the platform only for lawful purposes, such as requesting municipal documents, submitting complaints, viewing official information, and accessing other provided e-services. You agree not to use the platform:</p>
+        <ul>
+            <li>In any way that violates any applicable local, national, or international law or regulation.</li>
+            <li>For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way.</li>
+            <li>To transmit, or procure the sending of, any advertising or promotional material, including any "junk mail", "chain letter," "spam," or any other similar solicitation.</li>
+            <li>To impersonate or attempt to impersonate the Municipality, a Municipality employee, another user, or any other person or entity.</li>
+        </ul>
+
+        <h2>5. Intellectual Property</h2>
+        <p>The Service and its original content (excluding Content provided by users), features, and functionality are and will remain the exclusive property of [Your Municipality Name or Project Name] and its licensors. </p>
+
+        <h2>6. Termination</h2>
+        <p>We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+
+         <h2>7. Limitation of Liability</h2>
+         <p>In no event shall [Your Municipality Name or Project Name], nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.</p>
+
+        <h2>8. Governing Law</h2>
+        <p>These Terms shall be governed and construed in accordance with the laws of Lebanon, without regard to its conflict of law provisions.</p>
+
+        <h2>9. Changes to Terms</h2>
+        <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions about these Terms, please contact us via the Contact section of the platform or by emailing your local Municipality.</p>
+
+        <p style="text-align:center; margin-top: 40px;">--- End of Terms and Conditions ---</p>
+
+        <!-- ADD THIS BUTTON -->
+        <button class="go-back-button" onclick="goBackToLogin()">Return to Login/Register</button>
+        <!-- END OF ADDED BUTTON -->
+
+    </div>
+
+    <script>
+        function goBackToLogin() {
+            // Redirects the user to the login/register page URL
+            window.location.href = "{{ url_for('user_auth.login_register') }}";
+             // Or use a static URL if needed: window.location.href = '/login_register';
+             // Using url_for is generally better if the route name might change.
+        }
+    </script>
+</body>
+</html>

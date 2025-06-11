@@ -1,0 +1,831 @@
+
+<html>
+<head>
+    <title>Lebanon Administrative Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <style>
+        #map { height: 500px; }
+        .layer-toggle, .search-container {
+            background: white;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .nav-bar {
+            background: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        .nav-links li {
+            margin-right: 15px;
+        }
+        .nav-links a, .nav-links button {
+            color: white;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .nav-links button:hover, .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+        #searchInput {
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        #searchResults {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="nav-bar">
+        <div><h1 style="margin: 0; font-size: 1.5em;">Lebanon Administrative Map</h1></div>
+        <ul class="nav-links">
+            <li><button onclick="location.href='/home'">Go Back</button></li>
+            <li><button onclick="handleLogout()">Logout</button></li>
+        </ul>
+    </div>
+</header>
+<div class="layer-toggle">
+    <label>Select Administrative Layer:</label>
+    <select id="layerSelector">
+        <option value="adm_1">Governorates</option>
+        <option value="adm_2">Districts</option>
+        <option value="adm_3" selected>Municipalities</option>
+    </select>
+    <label><input type="checkbox" id="toggle-markers" checked> Show Displacement Markers</label>
+    <label><input type="checkbox" id="toggle-idp-markers" checked> Show IDP per Governorate</label>
+    <label><input type="checkbox" id="toggle-heatmap"> Show Population Heatmap</label>
+    <label><input type="checkbox" id="toggle-schools"> Show Public Schools</label>
+    <label><input type="checkbox" id="toggle-healthcare"> Show Healthcare Facilities</label>
+    <label><input type="checkbox" id="toggle-airquality"> Show Air Quality</label>
+    <label><input type="checkbox" id="toggle-waterways"> Show Waterways</label>
+    <label>
+        <input type="checkbox" id="toggle-food-centers">
+        Show Food Distribution Centers
+    </label>
+    <label>
+        <input type="checkbox" id="toggle-water-establishments">
+        Show Water Establishments
+    </label>
+    <label>
+        <input id="iss-toggle" type="checkbox">
+         Informal Settlements
+    </label>
+    <label>
+        <input type="checkbox" id="toggle-warehouses">
+        Show Warehouses
+    </label>
+    <label>
+        <input type="checkbox" id="toggle-camps">
+        Show Palestinian Camps
+    </label>
+    <label>
+        <input type="checkbox" id="toggle-shops">
+        Show Contracted Shops
+    </label>
+    <label>
+        <input type="checkbox" id="toggle-sdcs">
+        Show Social-Development Centers
+    </label>
+    <label>
+        <input type="checkbox" id="toggle-villages">
+        Show Households by Village
+    </label>
+    <label>
+        <input type="checkbox" id="toggle-remittance">
+        Show Remittance Agents
+    </label>
+    
+      
+      
+      
+      
+      
+      
+      
+</div>
+<div id="map"></div>
+<div class="search-container">
+    <label for="searchInput">Search Municipality:</label>
+    <input type="text" id="searchInput" placeholder="Enter municipality name...">
+    <button onclick="searchMunicipality()">Search</button>
+    <div id="searchResults"></div>
+</div>
+
+<script>
+var map = L.map('map').setView([33.8547, 35.8623], 8);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+var layers = {
+    "adm_1": "static/geojson/adm_1.geojson",
+    "adm_2": "static/geojson/adm_2.geojson",
+    "adm_3": "static/geojson/adm_3.geojson"
+};
+
+var municipalityData = {};
+var currentLayer;
+var markersLayer = L.layerGroup().addTo(map);
+var idpLayer = L.layerGroup().addTo(map);
+var schoolLayer = L.layerGroup().addTo(map);
+var clinicLayer = L.layerGroup().addTo(map);
+var airQualityLayer = L.layerGroup().addTo(map);
+var waterwaysLayer = L.layerGroup().addTo(map);
+const foodCentersLayer = L.layerGroup().addTo(map);
+/* layer for Water Establishments */
+const waterEstLayer = L.layerGroup().addTo(map);
+const warehouseLayer = L.layerGroup().addTo(map);
+const campsLayer = L.layerGroup().addTo(map);
+const shopsLayer = L.layerGroup().addTo(map);
+const sdcLayer = L.layerGroup().addTo(map);
+var healthFacilitiesLayer = L.layerGroup().addTo(map);
+const villagesLayer = L.layerGroup().addTo(map);
+const remittanceLayer = L.layerGroup().addTo(map);
+
+
+
+
+
+
+
+var heatmapLayer = null;
+
+fetch("/static/geojson/municipalities_data_with_coords.json")
+.then(res => res.json())
+.then(data => {
+    data.forEach(m => {
+        municipalityData[m.Name_EN.trim().toLowerCase()] = m;
+    });
+});
+
+function loadLayer(layerName) {
+    if (currentLayer) map.removeLayer(currentLayer);
+
+    fetch(layers[layerName])
+    .then(res => res.json())
+    .then(data => {
+        currentLayer = L.geoJSON(data, {
+            onEachFeature: function (feature, layer) {
+                let name = feature.properties.NAME_3 || feature.properties.NAME_2 || feature.properties.NAME_1;
+                let details = municipalityData[name.trim().toLowerCase()];
+                let popup = details ? `
+                    <b>${details.Name_EN} (${details.Name_AR})</b><br>
+                    <p><strong>Phone:</strong> ${details.Phone || "N/A"}</p>
+                    <p><a href="${details.Google_Map_Link}" target="_blank">View on Google Maps</a></p>
+                ` : `<b>${name}</b><br>No additional data.`;
+                layer.bindPopup(popup);
+            }
+        }).addTo(map);
+
+        if (layerName === "adm_3" && document.getElementById("toggle-markers").checked) {
+            fetchAndDisplayEventMarkers();
+        } else {
+            markersLayer.clearLayers();
+        }
+
+        if (document.getElementById("toggle-idp-markers").checked) {
+            fetchAndDisplayGovernorateMarkers();
+        } else {
+            idpLayer.clearLayers();
+        }
+
+        if (document.getElementById("toggle-heatmap").checked) {
+            loadPopulationHeatmap();
+        } else {
+            if (heatmapLayer) map.removeLayer(heatmapLayer);
+        }
+
+        if (document.getElementById("toggle-schools").checked) {
+            loadPublicSchoolMarkers();
+        } else {
+            schoolLayer.clearLayers();
+        }
+
+        if (document.getElementById("toggle-healthcare").checked) {
+            loadHealthcareMarkers();
+        } else {
+            clinicLayer.clearLayers();
+        }
+
+        if (document.getElementById("toggle-airquality").checked) {
+            loadAirQualityMarkers();
+        } else {
+            airQualityLayer.clearLayers();
+        }
+
+        if (document.getElementById("toggle-waterways").checked) {
+            loadWaterwaysMarkers();
+        } else {
+            waterwaysLayer.clearLayers();
+        }
+        if (document.getElementById("toggle-food-centers").checked) {
+            loadFoodDistributionCenters();
+        } else {
+            foodCentersLayer.clearLayers();
+        }
+        // Water Establishments
+        if (document.getElementById("toggle-water-establishments").checked) {
+            loadWaterEstablishments();
+        } else {
+            waterEstLayer.clearLayers();
+        }
+        if (document.getElementById("iss-toggle").checked) {
+             issLayer ? issLayer.addTo(map) : loadInformalSettlements();
+        } else if (issLayer) {
+            map.removeLayer(issLayer);
+        }
+        // ── Warehouses ───────────────────────────────
+        if (document.getElementById("toggle-warehouses").checked) {
+            loadWarehouses();
+        } else {
+            warehouseLayer.clearLayers();
+        }
+        if (document.getElementById("toggle-camps").checked) {
+            loadCamps();
+        } else {
+            campsLayer.clearLayers();
+        }
+        // ── Contracted Shops ─────────────────────────
+        if (document.getElementById("toggle-shops").checked) {
+            loadShops();
+        } else {
+            shopsLayer.clearLayers();
+        }
+        if (document.getElementById("toggle-sdcs").checked) {
+            loadSDCMarkers();
+        } else {
+            sdcLayer.clearLayers();
+        }
+        
+        if (document.getElementById("toggle-villages").checked) {
+            loadVillages();
+        }
+        else {
+            villagesLayer.clearLayers();
+        }
+        if (document.getElementById("toggle-remittance").checked) {
+            loadRemittanceAgents();
+        }
+        else {
+            remittanceLayer.clearLayers();
+        }
+
+
+
+
+        
+
+
+
+
+    });
+}
+
+function fetchAndDisplayEventMarkers() {
+    markersLayer.clearLayers();
+    fetch("/api/events")
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(e => {
+                if (e.latitude && e.longitude) {
+                    L.marker([e.latitude, e.longitude])
+                        .bindPopup(`<b>${e.locations_name}</b><br>Displaced: ${e.figure}<br>${e.description}`)
+                        .addTo(markersLayer);
+                }
+            });
+        });
+}
+
+function fetchAndDisplayGovernorateMarkers() {
+    idpLayer.clearLayers();
+    fetch("/api/idp-governorates")
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(e => {
+                if (e.lat && e.lng) {
+                    L.circleMarker([e.lat, e.lng], {
+                        radius: 10, color: "darkblue", fillColor: "#0077ff", fillOpacity: 0.6
+                    }).bindPopup(`
+                        <b>${e.name}</b><br>
+                        IDPs: ${e.idps}<br>
+                        Date: ${e.date}<br>
+                        Status: ${e.status}
+                    `).addTo(idpLayer);
+                }
+            });
+        });
+}
+
+function loadPopulationHeatmap() {
+    if (heatmapLayer) map.removeLayer(heatmapLayer);
+    fetch("/static/geojson/lbn_population_heatmap_10pct.json")
+        .then(res => res.json())
+        .then(data => {
+            heatmapLayer = L.heatLayer(data, {
+                radius: 15, blur: 25, maxZoom: 11,
+                gradient: { 0.2: 'blue', 0.4: 'lime', 0.6: 'orange', 0.8: 'red' }
+            }).addTo(map);
+        });
+}
+
+function loadPublicSchoolMarkers() {
+    schoolLayer.clearLayers();
+    fetch("/static/geojson/public_schools_markers.json")
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(s => {
+                if (s.lat && s.lng) {
+                    L.marker([s.lat, s.lng])
+                        .bindPopup(`<b>${s.name}</b><br>${s.caza}, ${s.governorate}`)
+                        .addTo(schoolLayer);
+                }
+            });
+        });
+}
+
+function loadHealthcareMarkers() {
+    clinicLayer.clearLayers();
+    fetch("/static/geojson/lebanon_healthcare_facilities.json")
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(c => {
+                if (c.lat && c.lng) {
+                    L.circleMarker([c.lat, c.lng], {
+                        radius: 6, color: "darkgreen", fillColor: "#4caf50", fillOpacity: 0.7
+                    }).bindPopup(`
+                        <b>${c.name}</b><br>
+                        ${c.caza}, ${c.governorate}<br>
+                        Type: ${c.type}
+                    `).addTo(clinicLayer);
+                }
+            });
+        });
+}
+
+function loadAirQualityMarkers() {
+    airQualityLayer.clearLayers();
+    fetch("/static/geojson/air_quality_markers.json")
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(marker => {
+                const popup = `
+                    <b>Location:</b> ${marker.location}<br>
+                    <b>Ozone (O₃):</b> ${marker.value} ${marker.unit}
+                `;
+                L.circleMarker([marker.lat, marker.lng], {
+                    radius: 6,
+                    color: "#ff8c00",
+                    fillColor: "#ffa726",
+                    fillOpacity: 0.8
+                }).bindPopup(popup).addTo(airQualityLayer);
+            });
+        });
+}
+
+function loadWaterwaysMarkers() {
+    waterwaysLayer.clearLayers();
+    fetch("/static/geojson/hotosm_lbn_waterways_points_geojson.geojson")
+        .then(res => res.json())
+        .then(data => {
+            L.geoJSON(data, {
+                pointToLayer: function (feature, latlng) {
+                    return L.circleMarker(latlng, {
+                        radius: 5,
+                        color: "blue",
+                        fillColor: "#2196f3",
+                        fillOpacity: 0.6
+                    }).bindPopup(`<b>Waterway</b><br>${feature.properties.name || 'Unnamed'}`);
+                }
+            }).addTo(waterwaysLayer);
+        });
+}
+function loadFoodDistributionCenters() {
+  foodCentersLayer.clearLayers();
+  fetch("/static/geojson/idp_displacement_sites.json")
+    .then(r => r.json())
+    .then(data => {
+      data.forEach(site => {
+        if (site.Lat && site.Long) {
+          L.marker([site.Lat, site.Long])
+           .bindPopup(
+             `<b>${site.Location}</b><br>
+              Governorate: ${site.Governorate}<br>
+              District: ${site.District}<br>
+              Notes: ${site.Notes || 'N/A'}<br>
+              IDPs: ${site.IDPs}`
+           )
+           .addTo(foodCentersLayer);
+        }
+      });
+    })
+    .catch(console.error);
+}
+
+// ---------- Water Establishments ----------
+function loadWaterEstablishments () {
+  waterEstLayer.clearLayers();
+
+  fetch("/static/geojson/water_establishments.json")
+    .then(r => r.json())
+    .then(data => {
+      data.forEach(st => {
+        if (st.lat && st.lon) {
+          L.circleMarker([st.lat, st.lon], {
+            radius: 5,
+            color: "#00695c",
+            fillColor: "#26a69a",
+            fillOpacity: 0.7
+          })
+          .bindPopup(
+            `<b>${st.station_name}</b><br>` +
+            `${st.district}, ${st.governorate}<br>` +
+            `${st.type}`
+          )
+          .addTo(waterEstLayer);
+        }
+      });
+    })
+    .catch(console.error);
+}
+let issLayer;    // Leaflet layer cache
+
+function loadInformalSettlements() {
+  const url =
+    "https://gis.lbn.wfp.org/server/rest/services/Hosted/" +
+    "lbn_ListofInformalSettlements_IAMP/FeatureServer/0/query" +
+    "?outFields=*&where=1%3D1&f=geojson";
+
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      issLayer = L.geoJSON(data, {
+        pointToLayer: (feat, latlng) =>
+          L.circleMarker(latlng, {
+            radius: 6,
+            weight: 1,
+            fillOpacity: 0.8,
+            color: "#2ecc71",        // Border color (green)
+            fillColor: "#2ecc71"     // Fill color (green)
+
+          }).bindPopup(
+            `<strong>${feat.properties.Settlement}</strong><br>
+            Households: ${feat.properties.TOT_HH ?? feat.properties.HH_Count ?? "n/a"}`
+          )
+      });
+
+      // Add immediately if box already checked (e.g., page refresh)
+      if (document.getElementById("iss-toggle").checked) {
+        issLayer.addTo(map);
+      }
+    })
+    .catch(err => console.error("Informal Settlements layer error:", err));
+}
+
+
+function loadWarehouses () {
+  warehouseLayer.clearLayers();
+
+  fetch("/static/geojson/warehouses.json")   // ← path to the file you saved
+    .then(r => r.json())
+    .then(data => {
+      data.forEach(w => {
+        if (w.lat && w.long) {
+          const marker = L.circleMarker([w.lat, w.long], {
+            radius: 6,
+            color: "#5d4037",
+            fillColor: "#8d6e63",
+            fillOpacity: 0.8
+          }).bindPopup(
+            `<strong>${w.name}</strong><br>
+             Location: ${w.location}<br>
+             CP: ${w.cp}<br>
+             Type: ${w.type}<br>
+             ${w.district}, ${w.governorate}`
+          );
+          marker.addTo(warehouseLayer);
+        }
+      });
+    })
+    .catch(console.error);
+}
+
+/* ---------- Palestinian Camps ---------- */
+function loadCamps () {
+  campsLayer.clearLayers();
+
+  fetch("/static/geojson/palestinian_camps.json")
+    .then(r => r.json())
+    .then(data => {
+      data.forEach(c => {
+        if (c.lat && c.long) {
+          L.circleMarker([c.lat, c.long], {
+            radius: 6,
+            color: "#b71c1c",
+            fillColor: "#e57373",
+            fillOpacity: 0.85
+          }).bindPopup(
+            `<strong>${c.camp}</strong><br>
+             ${c.cadastral}<br>
+             ${c.caza}, ${c.governorate}`
+          ).addTo(campsLayer);
+        }
+      });
+    })
+    .catch(console.error);
+}
+
+/* ---------- Contracted Shops ---------- */
+function loadShops () {
+  shopsLayer.clearLayers();
+
+  fetch("/static/geojson/contracted_shops.json")
+    .then(r => r.json())
+    .then(data => {
+      data.forEach(s => {
+        if (s.latitude && s.longitude) {
+          L.circleMarker([s.latitude, s.longitude], {
+            radius: 5,
+            color: "#283593",
+            fillColor: "#5c6bc0",
+            fillOpacity: 0.8
+          }).bindPopup(
+            `<strong>${s.shopName}</strong><br>
+             Code: ${s.shopCode}<br>
+             Type: ${s.type} (${s.statusContract})<br>
+             SO: ${s.so}<br>
+             ${s.village}, ${s.district}, ${s.governorate}<br>
+             ${s.location}`
+          ).addTo(shopsLayer);
+        }
+      });
+    })
+    .catch(console.error);
+}
+
+function loadSDCMarkers () {
+  sdcLayer.clearLayers();
+  fetch("/static/geojson/social_development_centers.json")
+    .then(r => r.json())
+    .then(obj => {
+      obj.socialDevelopmentCenters.forEach(sdc => {
+        if (sdc.latitude && sdc.longitude) {
+          L.circleMarker([sdc.latitude, sdc.longitude], {
+            radius: 6,
+            color: "#6a1b9a",
+            fillColor: "#ab47bc",
+            fillOpacity: 0.8
+          }).bindPopup(`
+            <strong>${sdc.site_name}</strong> – ${sdc.center_type}<br>
+            ${sdc.district}, ${sdc.governorate}<br>
+            Specialty: ${sdc.specialty || "N/A"}
+          `).addTo(sdcLayer);
+        }
+      });
+    })
+    .catch(console.error);
+}
+
+
+
+function loadVillages () {
+  villagesLayer.clearLayers();
+
+  fetch("/static/geojson/villages.json")
+    .then(r => r.json())
+    .then(list => {
+      list.forEach(v => {
+        if (v.lat && v.long) {
+          L.circleMarker([v.lat, v.long], {
+              radius : 5,
+              color  : "#ff9800",
+              fillColor : "#ffb74d",
+              fillOpacity : 0.85
+          })
+          .bindPopup(`
+            <strong>${v.village}</strong><br>
+            HHs&nbsp;:&nbsp;${v.hhs}<br>
+            ${v.district}, ${v.governorate}<br>
+            P-code:&nbsp;${v.pcode}
+          `)
+          .addTo(villagesLayer);
+        }
+      });
+    })
+    .catch(console.error);
+}
+
+function loadRemittanceAgents () {
+  remittanceLayer.clearLayers();
+
+  fetch("/static/geojson/remittance_agents.json")
+    .then(r => r.json())
+    .then(data => {
+      const agents = Array.isArray(data) ? data : data.agents;
+      if (!agents) {
+        console.error("remittance_agents.json has an unexpected structure");
+        return;
+      }
+
+      agents.forEach(a => {
+        if (a.lat && a.long) {
+          L.circleMarker([a.lat, a.long], {
+            radius: 6,
+            color: "#004d40",
+            fillColor: "#26a69a",
+            fillOpacity: 0.85
+          }).bindPopup(
+            `<strong>${a.mtoAgentName}</strong><br>
+             Code: ${a.merchantCode}<br>
+             ${a.village}, ${a.district}, ${a.governorate}<br>
+             ${a.cityAddress ?? ""}`
+          ).addTo(remittanceLayer);
+        }
+      });
+    })
+    .catch(err => console.error("Remittance layer error:", err));
+}
+
+
+
+
+
+document.getElementById("layerSelector").addEventListener("change", function () {
+    loadLayer(this.value);
+});
+
+document.getElementById("toggle-markers").addEventListener("change", function () {
+    if (this.checked ) {
+        fetchAndDisplayEventMarkers();
+    } else {
+        markersLayer.clearLayers();
+    }
+});
+
+document.getElementById("toggle-idp-markers").addEventListener("change", function () {
+    if (this.checked && document.getElementById("layerSelector").value === "adm_1") {
+        fetchAndDisplayGovernorateMarkers();
+    } else {
+        idpLayer.clearLayers();
+    }
+});
+
+document.getElementById("toggle-heatmap").addEventListener("change", function () {
+    if (this.checked) {
+        loadPopulationHeatmap();
+    } else {
+        if (heatmapLayer) map.removeLayer(heatmapLayer);
+    }
+});
+
+document.getElementById("toggle-schools").addEventListener("change", function () {
+    if (this.checked) {
+        loadPublicSchoolMarkers();
+    } else {
+        schoolLayer.clearLayers();
+    }
+});
+
+document.getElementById("toggle-healthcare").addEventListener("change", function () {
+    if (this.checked) {
+        loadHealthcareMarkers();
+    } else {
+        clinicLayer.clearLayers();
+    }
+});
+
+document.getElementById("toggle-airquality").addEventListener("change", function () {
+    if (this.checked) {
+        loadAirQualityMarkers();
+    } else {
+        airQualityLayer.clearLayers();
+    }
+});
+
+document.getElementById("toggle-waterways").addEventListener("change", function () {
+    if (this.checked) {
+        loadWaterwaysMarkers();
+    } else {
+        waterwaysLayer.clearLayers();
+    }
+});
+document.getElementById("toggle-food-centers")
+.addEventListener("change", e =>
+    e.target.checked
+      ? loadFoodDistributionCenters()
+      : foodCentersLayer.clearLayers()
+  );
+
+document.getElementById("toggle-water-establishments")
+  .addEventListener("change", e =>
+    e.target.checked ? loadWaterEstablishments()
+                     : waterEstLayer.clearLayers()
+);
+document.getElementById("iss-toggle").addEventListener("change", e => {
+  if (e.target.checked) {
+    issLayer ? issLayer.addTo(map) : loadInformalSettlements();
+  } else if (issLayer) {
+    map.removeLayer(issLayer);
+  }
+});
+document.getElementById("toggle-warehouses").addEventListener("change", e =>
+    e.target.checked ? loadWarehouses()
+                     : warehouseLayer.clearLayers()
+);
+
+document.getElementById("toggle-camps").addEventListener("change", e =>
+    e.target.checked ? loadCamps()
+                     : campsLayer.clearLayers()
+);
+document.getElementById("toggle-shops")
+  .addEventListener("change", e =>
+    e.target.checked ? loadShops()
+                     : shopsLayer.clearLayers()
+);
+
+document.getElementById("toggle-sdcs").addEventListener("change", e => {
+    if (e.target.checked) {
+      loadSDCMarkers();
+    } else {
+      sdcLayer.clearLayers();
+    }
+});
+
+
+
+document.getElementById("toggle-villages").addEventListener("change", e => {
+  if (e.target.checked) {
+    loadVillages();
+  } else {
+    villagesLayer.clearLayers();
+  }
+});
+
+document.getElementById("toggle-remittance").addEventListener("change", e => {
+  if (e.target.checked) {
+    loadRemittanceAgents();
+  } else {
+    remittanceLayer.clearLayers();
+  }
+});
+
+
+
+function searchMunicipality() {
+    let input = document.getElementById('searchInput').value.trim().toLowerCase();
+    let resultsDiv = document.getElementById('searchResults');
+    if (!input) {
+        resultsDiv.style.display = "none"; resultsDiv.innerHTML = ""; return;
+    }
+    let found = Object.values(municipalityData).find(m =>
+        m.Name_EN.trim().toLowerCase() === input ||
+        m.Name_AR.trim().toLowerCase() === input
+    );
+    if (found) {
+        resultsDiv.style.display = "block";
+        resultsDiv.innerHTML = `<b>${found.Name_EN} (${found.Name_AR})</b><br>
+            <p><strong>Phone:</strong> ${found.Phone || "N/A"}</p>
+            <p><a href="${found.Google_Map_Link}" target="_blank">View on Google Maps</a></p>`;
+        if (found.Latitude && found.Longitude) map.setView([found.Latitude, found.Longitude], 12);
+    } else {
+        resultsDiv.style.display = "block"; resultsDiv.innerHTML = "<p>No municipality found.</p>";
+    }
+}
+
+function handleLogout() {
+    localStorage.removeItem("jwt_token");
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.href = "/login";
+}
+
+
+loadLayer('adm_3');
+</script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+[
+  {
+    "Location": "Ed Daousse Site (Al Mokhtar restaurant)",
+    "Lat": 34.60007,
+    "Long": 36.19794,
+    "Governorate": "Akkar",
+    "District": "Akkar",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Minyara site (Paradise Hall)",
+    "Lat": 34.53928,
+    "Long": 36.06166,
+    "Governorate": "Akkar",
+    "District": "Akkar",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "LRC center Bcharre",
+    "Lat": 34.25103,
+    "Long": 36.0039,
+    "Governorate": "North",
+    "District": "Bcharre",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Ebrine Munipality",
+    "Lat": 34.25518,
+    "Long": 35.66495,
+    "Governorate": "North",
+    "District": "El Batroun",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Bechmezzine Center of the Orthodox Youth Movement",
+    "Lat": 34.3161,
+    "Long": 35.78571,
+    "Governorate": "North",
+    "District": "El Koura",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Sir Ed Danniye - Rafic Harriri Stadium",
+    "Lat": 34.38717,
+    "Long": 36.02945,
+    "Governorate": "North",
+    "District": "El Minieh-Dennie",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "El Mina - LRC site",
+    "Lat": 34.43105,
+    "Long": 35.81724,
+    "Governorate": "North",
+    "District": "Tripoli",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Kherbit Rouha Hall",
+    "Lat": 33.5742,
+    "Long": 35.83874,
+    "Governorate": "Bekaa",
+    "District": "Rachaya",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Kamed Lawz Hall",
+    "Lat": 33.62584,
+    "Long": 35.82348,
+    "Governorate": "Bekaa",
+    "District": "West Bekaa",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Match Point",
+    "Lat": 33.82718,
+    "Long": 35.89955,
+    "Governorate": "Bekaa",
+    "District": "Zahle",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Al Mokhtar Hall - Arsal",
+    "Lat": 34.19101,
+    "Long": 36.41558,
+    "Governorate": "Baalbek-El Hermel",
+    "District": "Baalbek",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Bednayel Site",
+    "Lat": 33.91662,
+    "Long": 36.01844,
+    "Governorate": "Baalbek-El Hermel",
+    "District": "Baalbek",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Btedii",
+    "Lat": 34.11475,
+    "Long": 36.10589,
+    "Governorate": "Baalbek-El Hermel",
+    "District": "Baalbek",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Hayakel Baalback Site",
+    "Lat": 34.00622,
+    "Long": 36.16705,
+    "Governorate": "Baalbek-El Hermel",
+    "District": "Baalbek",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Jarrah Scout, Ras Baalback",
+    "Lat": 34.26107,
+    "Long": 36.40488,
+    "Governorate": "Baalbek-El Hermel",
+    "District": "Baalbek",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Hermel Fun Park",
+    "Lat": 34.40176,
+    "Long": 36.39824,
+    "Governorate": "Baalbek-El Hermel",
+    "District": "El Hermel",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Champs Square - Hazmieh",
+    "Lat": 33.86503,
+    "Long": 35.52849,
+    "Governorate": "Beirut",
+    "District": "Beirut",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Talal Arslan Sports City",
+    "Lat": 33.80191,
+    "Long": 35.52748,
+    "Governorate": "Mount Lebanon",
+    "District": "Aley",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "The Game - Aley",
+    "Lat": 33.81274,
+    "Long": 35.61893,
+    "Governorate": "Mount Lebanon",
+    "District": "Aley",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Daraya Al Chouf Municipality",
+    "Lat": 33.64684,
+    "Long": 35.49791,
+    "Governorate": "Mount Lebanon",
+    "District": "Chouf",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Batloun Municipal Town Hall",
+    "Lat": 33.69676,
+    "Long": 35.65578,
+    "Governorate": "Mount Lebanon",
+    "District": "Chouf",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Michel El Murr Stadium - Dora",
+    "Lat": 33.89617,
+    "Long": 35.56271,
+    "Governorate": "Mount Lebanon",
+    "District": "El Meten",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Convent St. Tamich - Dik El Mehdy",
+    "Lat": 33.9411,
+    "Long": 35.61977,
+    "Governorate": "Mount Lebanon",
+    "District": "El Meten",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "President Michel Sleiman - Sports City Jbeil",
+    "Lat": 34.12261,
+    "Long": 35.66719,
+    "Governorate": "Mount Lebanon",
+    "District": "Jbeil",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Convent St. Therese - Shaile",
+    "Lat": 33.96037,
+    "Long": 35.66461,
+    "Governorate": "Mount Lebanon",
+    "District": "Kesrwane",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Convent St. Doumit",
+    "Lat": 34.05266,
+    "Long": 35.63763,
+    "Governorate": "Mount Lebanon",
+    "District": "Kesrwane",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Btekhnay-High Metn (Social Center)",
+    "Lat": 33.84277,
+    "Long": 35.72146,
+    "Governorate": "Mount Lebanon",
+    "District": "Baabda",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Forum De Beyrouth",
+    "Lat": 33.8983,
+    "Long": 35.53539,
+    "Governorate": "Mount Lebanon",
+    "District": "Baabda",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Tebnin Public School",
+    "Lat": 33.19542,
+    "Long": 35.41105,
+    "Governorate": "El Nabatieh",
+    "District": "Bent Jbeil",
+    "Notes": "Also used for IDPs",
+    "IDPs": "No"
+  },
+  {
+    "Location": "Nabatieh-Lavita palace",
+    "Lat": 33.34964,
+    "Long": 35.49211,
+    "Governorate": "El Nabatieh",
+    "District": "El Nabatieh",
+    "Notes": "Also used for IDPs",
+    "IDPs": "No"
+  },
+  {
+    "Location": "Dar Hasbaya",
+    "Lat": 33.40161,
+    "Long": 35.66951,
+    "Governorate": "El Nabatieh",
+    "District": "Hasbaya",
+    "Notes": "Also used for IDPs",
+    "IDPs": "No"
+  },
+  {
+    "Location": "Ebl El Seqi Public School",
+    "Lat": 33.36118,
+    "Long": 35.62566,
+    "Governorate": "El Nabatieh",
+    "District": "Marjaayoun",
+    "Notes": "Also used for IDPs",
+    "IDPs": "No"
+  },
+  {
+    "Location": "Jezzine-kfarhuna cultural club",
+    "Lat": 33.49336,
+    "Long": 35.58044,
+    "Governorate": "South",
+    "District": "Jezzine",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Jezzine-khalil and linda sleem sports center",
+    "Lat": 33.53944,
+    "Long": 35.57953,
+    "Governorate": "South",
+    "District": "Jezzine",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Saida-Municipal playgrounds",
+    "Lat": 33.58606,
+    "Long": 35.38603,
+    "Governorate": "South",
+    "District": "Saida",
+    "Notes": "Also used for IDPs",
+    "IDPs": "No"
+  },
+  {
+    "Location": "Sour-public high school",
+    "Lat": 33.26008,
+    "Long": 35.21361,
+    "Governorate": "South",
+    "District": "Sour",
+    "Notes": null,
+    "IDPs": "No"
+  },
+  {
+    "Location": "Chehabieh elementry School - Tyre",
+    "Lat": 33.25091,
+    "Long": 35.38724,
+    "Governorate": "South",
+    "District": "Sour",
+    "Notes": "Also used for IDPs",
+    "IDPs": "No"
+  },
+  {
+    "Location": "Srifa Municipality",
+    "Lat": 33.2744,
+    "Long": 35.40242,
+    "Governorate": "South",
+    "District": "Sour",
+    "Notes": "Also used for IDPs",
+    "IDPs": "No"
+  },
+  {
+    "Location": "Ghobeiry Municipal Court",
+    "Lat": 33.85885,
+    "Long": 35.50191,
+    "Governorate": "Mount Lebanon",
+    "District": "Baabda",
+    "Notes": null,
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Al Jamous Square",
+    "Lat": 33.84879,
+    "Long": 35.5218,
+    "Governorate": "Mount Lebanon",
+    "District": "Baabda",
+    "Notes": null,
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Tebnin Public School",
+    "Lat": 33.19542,
+    "Long": 35.41105,
+    "Governorate": "El Nabatieh",
+    "District": "Bent Jbeil",
+    "Notes": "Also used for regular",
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Nabatieh-Lavita palace",
+    "Lat": 33.34964,
+    "Long": 35.49211,
+    "Governorate": "El Nabatieh",
+    "District": "El Nabatieh",
+    "Notes": "Also used for regular",
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Al Dweer Municipality",
+    "Lat": 33.39275,
+    "Long": 35.41143,
+    "Governorate": "El Nabatieh",
+    "District": "El Nabatieh",
+    "Notes": null,
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Al Qosaibe Public High School",
+    "Lat": 33.3435,
+    "Long": 35.39994,
+    "Governorate": "El Nabatieh",
+    "District": "El Nabatieh",
+    "Notes": null,
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Dar Hasbaya",
+    "Lat": 33.40161,
+    "Long": 35.66951,
+    "Governorate": "El Nabatieh",
+    "District": "Hasbaya",
+    "Notes": "Also used for regular",
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Ebl El Seqi Public School",
+    "Lat": 33.36118,
+    "Long": 35.62566,
+    "Governorate": "El Nabatieh",
+    "District": "Marjaayoun",
+    "Notes": "Also used for regular",
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Saida-Municipal playgrounds",
+    "Lat": 33.58606,
+    "Long": 35.38603,
+    "Governorate": "South",
+    "District": "Saida",
+    "Notes": "Also used for regular",
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "New Vegetables market - Sarafand",
+    "Lat": 33.44676,
+    "Long": 35.29253,
+    "Governorate": "South",
+    "District": "Saida",
+    "Notes": null,
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Chehabieh elementry School - Tyre",
+    "Lat": 33.25091,
+    "Long": 35.38724,
+    "Governorate": "South",
+    "District": "Sour",
+    "Notes": "Also used for regular",
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Sour Union of Municipalities Building",
+    "Lat": 33.26232,
+    "Long": 35.21709,
+    "Governorate": "South",
+    "District": "Sour",
+    "Notes": null,
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Sour - Deir Kanoun El Nahr",
+    "Lat": 33.29942335,
+    "Long": 35.31534354,
+    "Governorate": "South",
+    "District": "Sour",
+    "Notes": null,
+    "IDPs": "Yes"
+  },
+  {
+    "Location": "Srifa Municipality",
+    "Lat": 33.2744,
+    "Long": 35.40242,
+    "Governorate": "South",
+    "District": "Sour",
+    "Notes": "Also used for regular",
+    "IDPs": "Yes"
+  }
+]

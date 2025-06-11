@@ -1,0 +1,1026 @@
+[
+  {
+    "station_name": "BMLWE - Aamarieh Fanar-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.88348,
+    "lon": 35.57498,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Aamatour",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.638019,
+    "lon": 35.609629,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Aaraya-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.83328,
+    "lon": 35.58416,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Aaraya-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.83392,
+    "lon": 35.58395,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Adma Bas Kfaryassin-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.02706,
+    "lon": 35.63415,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Adma moyen-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.02296,
+    "lon": 35.654948,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ain Dara - St.",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.77776,
+    "lon": 35.71484,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ain Dara- Well",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.78615,
+    "lon": 35.74807,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ain El Cheikh-Well",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.88062,
+    "lon": 35.56138,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ain El Delbeh-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.04586,
+    "lon": 35.7638,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ain El Hor-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.658069,
+    "lon": 35.502678,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ain Jdide",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.806133,
+    "lon": 35.62633,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ain Jrein",
+    "governorate": "Mount Lebanon",
+    "district": "Jbeil",
+    "lat": 34.08536,
+    "lon": 35.7641,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ainab",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.767286,
+    "lon": 35.548078,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ainbal",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.661972,
+    "lon": 35.560381,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Al Kherbe",
+    "governorate": "Mount Lebanon",
+    "district": "Jbeil",
+    "lat": 34.1789,
+    "lon": 35.75355,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Aley- Well1",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.80473,
+    "lon": 35.61343,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Aley-Well2",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.79964,
+    "lon": 35.60974,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Alman",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.595849,
+    "lon": 35.421772,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Anout",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.636431,
+    "lon": 35.514872,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Antelias Ecole",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.91451,
+    "lon": 35.59127,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Antelias-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.91749,
+    "lon": 35.58463,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Antounieh-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.83397,
+    "lon": 35.53828,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Aramoun",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.76811,
+    "lon": 35.50944,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Aramoun-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.76811,
+    "lon": 35.50944,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Baabda-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.83208,
+    "lon": 35.54601,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Baadaran",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.636344,
+    "lon": 35.618142,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Baasir awkaf",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.65741,
+    "lon": 35.45922,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Baasir Hara",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.657627,
+    "lon": 35.459217,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Baasir-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.658635,
+    "lon": 35.44456,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Baawerteh",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.739228,
+    "lon": 35.501311,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Barja Centrale",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.64529,
+    "lon": 35.43966,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Barja Hamra",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.65228,
+    "lon": 35.442651,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Barja Wadi Imrin",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.647802,
+    "lon": 35.444399,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Barouk",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.71128,
+    "lon": 35.69307,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Barouk Sew",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.704385,
+    "lon": 35.66336,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bater",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.60009,
+    "lon": 35.6193,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Batloun",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.704385,
+    "lon": 35.66336,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Baysour",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.77027,
+    "lon": 35.57021,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bchamoun-1",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.78058,
+    "lon": 35.53346,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bchamoun-2",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.78519,
+    "lon": 35.51239,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bchamoun-3",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.7785,
+    "lon": 35.51141,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bchetfine",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.71178,
+    "lon": 35.56031,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bdedoun-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.80448,
+    "lon": 35.56242,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Benyeh",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.72757,
+    "lon": 35.56201,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bhamdoun St.",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.79969,
+    "lon": 35.65683,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bhamdoun well",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.800047,
+    "lon": 35.656948,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bleilbel New-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.80904,
+    "lon": 35.55679,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bmariam -1-",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.8309,
+    "lon": 35.71906,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bmariam -2-",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.83106,
+    "lon": 35.71767,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Botchay Merdeche-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.82272,
+    "lon": 35.54282,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Botchay-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.82811,
+    "lon": 35.54934,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Botmeh",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.66228,
+    "lon": 35.629397,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bouar-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.04313,
+    "lon": 35.64003,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bourj Abi Haidar1-St.",
+    "governorate": "Beirut",
+    "district": "Beirut",
+    "lat": 33.8855,
+    "lon": 35.49908,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bqellaiaa-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.912052,
+    "lon": 35.772197,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bsaba Mtole (Hasrout) St.",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.627874,
+    "lon": 35.535844,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bsalim-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.89409,
+    "lon": 35.60182,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bsous",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.816389,
+    "lon": 35.576969,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Btater",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.59896,
+    "lon": 35.618209,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Btebyat",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.83284,
+    "lon": 35.71039,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Bzebdine-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.87641,
+    "lon": 35.74394,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Cap sur ville-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.8696,
+    "lon": 35.56025,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Chabrouh-Dam",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.02586,
+    "lon": 35.83445,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Chabrouh-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.01709,
+    "lon": 35.82537,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Chahtoul-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.0334,
+    "lon": 35.72769,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Champville-Well",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.93621,
+    "lon": 35.60815,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Chekhnaya",
+    "governorate": "Mount Lebanon",
+    "district": "Jbeil",
+    "lat": 34.11409,
+    "lon": 35.76558,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Chhim wadi bark",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.617072,
+    "lon": 35.480816,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Chnaniir-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.00963,
+    "lon": 35.6738,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Coin Vert",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.01535,
+    "lon": 35.82377,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Dakkoun",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.644591,
+    "lon": 35.505501,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Dalhoun",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.628054,
+    "lon": 35.463566,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Dar Ali Faraya-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.01074,
+    "lon": 35.82295,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Daraya-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.636686,
+    "lon": 35.503625,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Daraya-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.644591,
+    "lon": 35.505501,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Daychounieh-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.85532,
+    "lon": 35.55361,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Debbiyeh-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.668096,
+    "lon": 35.489521,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Deir Dourit",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.685228,
+    "lon": 35.543536,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Deir El Salib-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.90198,
+    "lon": 35.58569,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Deir Koubel",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.793308,
+    "lon": 35.516217,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Deir Kouche-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.687596,
+    "lon": 35.545338,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Dekweneh New-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.87618,
+    "lon": 35.55238,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Dfoun",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.746436,
+    "lon": 35.5612,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Dmit 1",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.699224,
+    "lon": 35.510183,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Dmit 2",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.696676,
+    "lon": 35.494673,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - El Mokhada",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 33.94715,
+    "lon": 35.61994,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - ENGM - Jbeil",
+    "governorate": "Mount Lebanon",
+    "district": "Jbeil",
+    "lat": 34.118831,
+    "lon": 35.655511,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - ENGM - Okaibe",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.060139,
+    "lon": 35.651347,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Galerie Semaan",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.85664,
+    "lon": 35.52888,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Gharifeh",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.642728,
+    "lon": 35.550898,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Hazmieh-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.85849,
+    "lon": 35.52869,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Houmel well",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.82263,
+    "lon": 35.63665,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jadra-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.631368,
+    "lon": 35.411618,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jaj",
+    "governorate": "Mount Lebanon",
+    "district": "Jbeil",
+    "lat": 34.16473,
+    "lon": 35.8147,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jal El Dib-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.90936,
+    "lon": 35.58003,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jamhour-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.83054,
+    "lon": 35.57024,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jamhour-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.83089,
+    "lon": 35.56492,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jbaa",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.613261,
+    "lon": 35.628458,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jbeil-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Jbeil",
+    "lat": 34.12246,
+    "lon": 35.65559,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jdeideh-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.89192,
+    "lon": 35.56412,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jdeidet chouf",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.665528,
+    "lon": 35.605932,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jehliyeh",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.67012,
+    "lon": 35.51953,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jisr El Bacha-St.",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.86218,
+    "lon": 35.54068,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jisr El Kadi St.",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.72641,
+    "lon": 35.5624,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jisr El Kadi Well-1",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.7257,
+    "lon": 35.54947,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jisr El Kadi Well-2",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.72364,
+    "lon": 35.55207,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jiyyeh-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.653455,
+    "lon": 35.424784,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Joun well",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.578992,
+    "lon": 35.462347,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Jounieh Bas-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 33.98414,
+    "lon": 35.64321,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Joun-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.57881,
+    "lon": 35.46268,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kafar Cheham-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.053017,
+    "lon": 35.649397,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kafar Katra",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.71175,
+    "lon": 35.587297,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kafarhbeb Bas-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.01342,
+    "lon": 35.65041,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kafarhbeb moyen-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Kesrwane",
+    "lat": 34.01138,
+    "lon": 35.65809,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kafarmatta-well1",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.72831,
+    "lon": 35.52911,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kafra",
+    "governorate": "Mount Lebanon",
+    "district": "El Meten",
+    "lat": 33.860216,
+    "lon": 35.590463,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kafra-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.719416,
+    "lon": 35.700267,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ketermaya-1",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.6152,
+    "lon": 35.45504,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Ketermaya-2",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.61295,
+    "lon": 35.4561,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Keyfoun",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.78003,
+    "lon": 35.55768,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kmatiyyeh",
+    "governorate": "Mount Lebanon",
+    "district": "Aley",
+    "lat": 33.802778,
+    "lon": 35.576961,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kortbawi-Well",
+    "governorate": "Mount Lebanon",
+    "district": "Baabda",
+    "lat": 33.85382,
+    "lon": 35.52783,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Kour El Hawa",
+    "governorate": "Mount Lebanon",
+    "district": "Jbeil",
+    "lat": 34.17326,
+    "lon": 35.66779,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Laklouk-St.",
+    "governorate": "Mount Lebanon",
+    "district": "Jbeil",
+    "lat": 34.1437,
+    "lon": 35.85925,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Maasser El Chouf",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.662874,
+    "lon": 35.676019,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Maasser El Chouf st.",
+    "governorate": "Mount Lebanon",
+    "district": "Chouf",
+    "lat": 33.667214,
+    "lon": 35.670256,
+    "type": "Water Establishment"
+  },
+  {
+    "station_name": "BMLWE - Madiq Spring",
+    "governorate": "Mount Lebanon",
+    "district": "Jbeil",
+    "lat": 34.08326,
+    "lon": 35.70224,
+    "type": "Water Establishment"
+  }
+]

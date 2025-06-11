@@ -1,0 +1,32 @@
+{
+    "faqs": [
+        {
+            "question": "How do I pay my municipality fees?",
+            "answer": "You can pay your fees online through our website or at the municipal office."
+        },
+        {
+            "question": "What documents are required for a statement request?",
+            "answer": "You'll need your ID, proof of residence, and a completed request form."
+        },
+        {
+            "question": "How can I contact the municipality?",
+            "answer": "You can reach us via email at info@municipality.gov.lb or call +961 123 456."
+        },
+        {
+            "question": "What are the municipality's working hours?",
+            "answer": "The municipality operates from Monday to Friday, 8:00 AM to 4:00 PM."
+        },
+        {
+            "question": "How do I report an issue in my area?",
+            "answer": "You can report issues through our website’s complaint form or by visiting the municipality office."
+        },
+        {
+            "question": "How can I apply for a building permit?",
+            "answer": "Building permit applications can be submitted online via our portal or in person at the municipal office."
+        },
+        {
+            "question": "Where can I check the status of my requests?",
+            "answer": "You can track your requests through the 'Check My Requests' section on our website."
+        }
+    ]
+}

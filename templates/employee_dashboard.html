@@ -1,0 +1,317 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Municipality Employee Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/municipality_dashboard">Home</a></li>
+        <li><a href="/logout" onclick="logoutAndClear()">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Section for Posting Information (Tourism/Municipal) -->
+    <section class="dashboard-section">
+      <h2>Municipality Employee Dashboard</h2>
+      <p>Submit, review, and manage public information posts and municipal purchases.</p>
+
+      <h3>Post New Information (Tourism/Municipal)</h3>
+      <form id="infoPostForm" enctype="multipart/form-data" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required />
+      
+        <label for="image">Image (Tourism only):</label>
+        <input type="file" id="image" name="image" accept="image/*" />
+      
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+      
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+          <option value="">Select</option>
+          <option value="tourism">Tourism</option>
+          <option value="municipal_info">Municipal Info</option>
+        </select>
+      
+        <button type="submit">Submit Info Post</button>
+        <p id="submissionMessage" style="margin-top: 10px; font-weight: bold;"></p>
+      </form>
+    </section>
+
+    <!-- Section for Viewing/Managing Information Posts -->
+    <section class="view-section"> <!-- Changed class name for clarity -->
+      <h3>Manage Tourism Posts</h3>
+      <ul id="tourismPosts">
+        <li>Loading...</li>
+      </ul>
+
+      <h3>Manage Municipal Info Posts</h3>
+      <ul id="municipalPosts">
+        <li>Loading...</li>
+      </ul>
+    </section>
+
+    <!-- Section for Posting and Managing Municipal Purchases -->
+    <section class="form-section">
+        <h3>Post Municipal Purchase</h3>
+        <form id="purchaseForm">
+          <label for="purchase-title">Title:</label>
+          <input type="text" id="purchase-title" required />
+      
+          <label for="vendor">Vendor:</label>
+          <input type="text" id="vendor" required />
+      
+          <label for="amount">Amount (USD):</label>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <span style="font-weight: bold;">$</span>
+            <input type="number" id="amount" required min="1" step="any" placeholder="e.g. 25000" style="flex: 1;" />
+          </div>
+      
+          <label for="purchase-date">Purchase Date:</label>
+          <input type="date" id="purchase-date" required />
+      
+          <button type="submit">Post Purchase</button>
+          <p id="purchaseMessage" style="margin-top: 10px; font-weight: bold;"></p>
+        </form>
+      
+        <h3>Posted Municipal Purchases</h3>
+        <ul id="purchaseList">Loading...</ul>
+      </section>
+      
+    <!-- End of Municipal Purchases Section -->
+
+  </main>
+
+  <script>
+    // --- Functions for Info Posts (Tourism/Municipal) ---
+
+    async function fetchPosts(category, targetElementId) {
+        const container = document.getElementById(targetElementId);
+        container.innerHTML = "<li>Loading...</li>"; // Show loading state
+        try {
+            const response = await fetch(`/get_info_posts/${category}`);
+            if (!response.ok) {
+                 throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const posts = await response.json();
+            container.innerHTML = ""; // Clear loading/previous content
+
+            if (!posts || !Array.isArray(posts) || posts.length === 0) {
+                container.innerHTML = `<li>No posts yet.</li>`;
+                return;
+            }
+
+            posts.forEach(post => {
+                const li = document.createElement("li");
+                const postDate = post.created_at ? new Date(post.created_at).toLocaleString() : 'Date unknown';
+                li.innerHTML = `
+                <strong>${post.title || 'No Title'}</strong><br>
+                ${post.description || 'No Description'}<br>
+                <small>Posted on: ${postDate}</small><br>
+                <button onclick="deletePost(${post.id}, '${category}')">Delete</button>
+                <hr>
+                `;
+                container.appendChild(li);
+            });
+        } catch (error) {
+             console.error(`Error fetching ${category} posts:`, error);
+             container.innerHTML = `<li>Error loading posts. Please try again.</li>`;
+        }
+    }
+
+    async function deletePost(postId, category) {
+        const confirmDelete = confirm("Are you sure you want to delete this information post?");
+        if (!confirmDelete) return;
+
+        try {
+            // *** NOTE: Ensure you have a backend route like /delete_info_post/:id ***
+            const res = await fetch(`/delete_info_post/${postId}`, {
+                method: "DELETE"
+            });
+
+             if (!res.ok) {
+                 const errorData = await res.json().catch(() => ({ error: `Request failed with status ${res.status}` }));
+                 throw new Error(errorData.error || `Request failed with status ${res.status}`);
+             }
+
+            const result = await res.json();
+            alert(result.message || "Post deleted successfully.");
+
+            // Refresh lists after successful deletion
+            fetchPosts("tourism", "tourismPosts");
+            fetchPosts("municipal_info", "municipalPosts");
+        } catch(error) {
+            console.error("Error deleting post:", error);
+            alert(`Error deleting post: ${error.message}`);
+        }
+    }
+
+    // --- Functions for Municipal Purchases ---
+
+    // Load all posted purchases
+    async function fetchPurchases() {
+        const container = document.getElementById("purchaseList");
+        container.innerHTML = "<li>Loading purchases...</li>"; // Show loading state
+        try {
+            // *** NOTE: Ensure you have a backend route like /get_purchases ***
+            const res = await fetch("/get_purchases");
+            if (!res.ok) {
+                 throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            const data = await res.json();
+            container.innerHTML = ""; // Clear loading/previous content
+
+             // Assuming the backend returns an array directly
+            if (!data || !Array.isArray(data) || data.length === 0) {
+                container.innerHTML = `<li>No purchases posted yet.</li>`;
+                return;
+            }
+
+            data.forEach(p => {
+                const li = document.createElement("li");
+                const purchaseDate = p.purchase_date ? new Date(p.purchase_date).toLocaleDateString() : 'Date unknown';
+                // Format amount potentially? e.g., to currency
+                const formattedAmount = p.amount ? `$${parseFloat(p.amount).toFixed(2)}` : 'Amount unknown';
+
+                li.innerHTML = `
+                <strong>${p.title || 'No Title'}</strong><br>
+                Vendor: ${p.vendor || 'N/A'}<br>
+                Amount: ${formattedAmount}<br>
+                Date: ${purchaseDate}<br>
+                <button onclick="deletePurchase(${p.id})">Delete</button>
+                <hr>
+                `;
+                container.appendChild(li);
+            });
+        } catch (error) {
+             console.error('Error fetching purchases:', error);
+             container.innerHTML = `<li>Error loading purchases. Please try again.</li>`;
+        }
+    }
+
+    // Delete a purchase
+    async function deletePurchase(id) {
+        const confirmDelete = confirm("Are you sure you want to delete this purchase record?");
+        if (!confirmDelete) return;
+
+         try {
+            // *** NOTE: Ensure you have a backend route like /delete_purchase/:id ***
+            const res = await fetch(`/delete_purchase/${id}`, {
+                method: "DELETE"
+            });
+
+             if (!res.ok) {
+                 const errorData = await res.json().catch(() => ({ error: `Request failed with status ${res.status}` }));
+                 throw new Error(errorData.error || `Request failed with status ${res.status}`);
+             }
+
+            const result = await res.json();
+            alert(result.message || "Purchase deleted successfully.");
+            fetchPurchases(); // Refresh the list after successful deletion
+        } catch(error) {
+            console.error("Error deleting purchase:", error);
+            alert(`Error deleting purchase: ${error.message}`);
+        }
+    }
+
+    // --- Event Listeners ---
+
+    // Handle Info Post form submission
+    document.getElementById("infoPostForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const submissionMessage = document.getElementById("submissionMessage");
+  submissionMessage.innerText = "Submitting info post...";
+  submissionMessage.style.color = "black";
+
+  const form = document.getElementById("infoPostForm");
+  const formData = new FormData(form);  // ✅ Collect all form fields, including file
+
+  try {
+    const response = await fetch("/submit_info_post", {
+      method: "POST",
+      body: formData  // ✅ Send as multipart/form-data
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || `Request failed with status ${response.status}`);
+    }
+
+    submissionMessage.innerText = result.message || "Info post submitted successfully!";
+    submissionMessage.style.color = "green";
+    form.reset();
+  } catch (error) {
+    console.error("Error submitting info post:", error);
+    submissionMessage.innerText = `Error: ${error.message}`;
+    submissionMessage.style.color = "red";
+  } finally {
+    setTimeout(() => { submissionMessage.innerText = ""; }, 5000);
+  }
+});
+
+
+    // Handle Purchase form submission
+    document.getElementById("purchaseForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const purchaseMessage = document.getElementById("purchaseMessage");
+        purchaseMessage.innerText = "Submitting purchase...";
+        purchaseMessage.style.color = "black";
+
+        const title = document.getElementById("purchase-title").value.trim();
+        const vendor = document.getElementById("vendor").value.trim();
+        const amount = document.getElementById("amount").value.trim(); // Keep as string for backend validation potentially
+        const date = document.getElementById("purchase-date").value;
+
+         // Basic client-side validation (optional but recommended)
+         if (!title || !vendor || !amount || !date) {
+              purchaseMessage.innerText = "Error: All purchase fields are required.";
+              purchaseMessage.style.color = "red";
+              return;
+         }
+
+        try {
+            // *** NOTE: Ensure you have a backend route like /submit_purchase ***
+            const response = await fetch("/submit_purchase", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ title, vendor, amount, purchase_date: date })
+            });
+
+             const result = await response.json();
+
+             if (!response.ok) {
+                 throw new Error(result.error || `Request failed with status ${response.status}`);
+             }
+
+            purchaseMessage.innerText = result.message || "Purchase posted successfully!";
+            purchaseMessage.style.color = "green";
+            document.getElementById("purchaseForm").reset();
+            fetchPurchases(); // Refresh the purchase list
+
+        } catch (error) {
+            console.error("Error submitting purchase:", error);
+            purchaseMessage.innerText = `Error: ${error.message}`;
+            purchaseMessage.style.color = "red";
+        } finally {
+            setTimeout(() => { purchaseMessage.innerText = ""; }, 5000);
+        }
+    });
+
+    // --- Initial Data Loading ---
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchPosts("tourism", "tourismPosts");
+        fetchPosts("municipal_info", "municipalPosts");
+        fetchPurchases(); // Initial load for purchases
+    });
+
+  </script>
+</body>
+</html>

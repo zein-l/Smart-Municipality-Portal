@@ -1,0 +1,111 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Request</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body onload="fetchDocumentRequest()">  
+    <header>
+        <nav>
+            <div class="language-selector">
+                <button class="language-dropdown" id="languageDropdownButton">
+                    Select Language
+                </button>
+                <div class="dropdown-menu">
+                    <a href="?lang=en" {% if lang == 'en' %}style="font-weight: bold;"{% endif %}>🇬🇧 English</a>
+                    <a href="?lang=ar" {% if lang == 'ar' %}style="font-weight: bold;"{% endif %}>🇦🇪 العربية</a>
+                    <a href="?lang=fr" {% if lang == 'fr' %}style="font-weight: bold;"{% endif %}>🇫🇷 Français</a>
+                    <a href="?lang=hy" {% if lang == 'hy' %}style="font-weight: bold;"{% endif %}>🇦🇲 Հայերեն</a>
+                </div>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('home', lang=request.args.get('lang')) }}">Home</a></li>
+                <li><a href="{{ url_for('document_request', lang=request.args.get('lang')) }}">Document Request</a></li>
+                <li><a href="{{ url_for('council_purchases') }}">Council & Purchases</a></li>
+                <li><a href="{{ url_for('careers_volunteers', lang=request.args.get('lang')) }}">Careers and Volunteers</a></li>
+                <li><a href="{{ url_for('contact', lang=request.args.get('lang')) }}">Contact</a></li>
+                <li><a href="{{ url_for('user_auth.login_register') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="document-request-section">
+            <h2>Request an Official Document</h2>
+            <form id="document-request-form">
+                <label for="document-type">Select Document Type</label>
+                <select id="document-type" name="document-type" required>
+                    <option disabled selected value> -- Select Document Type -- </option>
+                    <option value="tarkhis_mo2assase_3">Institution License (Form 3)</option>
+                    <option value="tarkhis_mo2assase_1_2">Institution License (Form 1 or 2)</option>
+                    <option value="tarkhis_mahatat_tawzi3">Distribution Station License</option>
+                    <option value="tarkhis_ensha2_estesmar">Investment Establishment License</option>
+                    <option value="talab_wasel_beltasrih">Declaration Receipt Request</option>
+                    <option value="talab_taswiyit_mokhalafit_bine2">Building Violation Settlement Request</option>
+                    <option value="talab_tarkhis_ehtiraf_mehan">Professional Practice License</option>
+                    <option value="talab_tarkhis_e3len">Advertisement License Request</option>
+                    <option value="talab_tarkhis_bine2">Building License Request</option>
+                    <option value="talab_tarkhis_ashghel">Works License Request</option>
+                    <option value="talab_takhmin_thaman">Price Estimation Request</option>
+                    <option value="talab_tajdid_tarkhis_bine2">Renew Building License Request</option>
+                    <option value="talab_shira2_fadlit_3ikar">Request to Buy Property Excess</option>
+                    <option value="talab_rokhsit_eshghal_sakan">Residential Occupation Permit</option>
+                    <option value="talab_rabet_majrour">Sewer Connection Request</option>
+                    <option value="talab_e3tirad">Objection Request</option>
+                    <option value="talab_dam_tarik">Road Merger Request</option>
+                    <option value="talab_bine2_fo2_bine2">Build on Existing Building Request</option>
+                    <option value="talab_bara2it_zeme">Municipal Clearance Request</option>
+                    <option value="shakwa_aw_moraja3a">Complaint or Review</option>
+                </select>
+                <button type="button" onclick="redirectToForm()">Next</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function redirectToForm() {
+            const selectedDoc = document.getElementById('document-type').value;
+            if (selectedDoc) {
+                window.location.href = `/document/${selectedDoc}`;
+            } else {
+                alert("Please select a document type.");
+            }
+        }
+
+        async function fetchDocumentRequest() {
+            const token = localStorage.getItem("jwt_token");
+
+            if (!token) {
+                console.error("No token found! Redirecting to login.");
+                window.location.href = "/login";
+                return;
+            }
+
+            try {
+                const response = await fetch("/document_request", {
+                    method: "GET",
+                    headers: new Headers({
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    console.log("Access granted:", data);
+                } else {
+                    alert("Access denied: " + (data.error || "Unauthorized"));
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+    </script>
+</body>
+</html>

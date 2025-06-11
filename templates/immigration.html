@@ -1,0 +1,56 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="document.html">Document Request</a></li>
+                <li><a href="council-info.html">Council & Purchases</a></li>
+                <li><a href="careers.html">Careers and Volunteers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="map-section">
+            <h2>Live IDP & Immigrant Movements</h2>
+            <div class="map-container">
+                <img src="map-placeholder.png" alt="Map" />
+            </div>
+            <div class="filters">
+                <label for="region">Region</label>
+                <select id="region" name="region">
+                  <option value="beirut">Beirut</option>
+                  <option value="mount-lebanon">Mount Lebanon</option>
+                  <option value="north-lebanon">North Lebanon</option>
+                  <option value="akkar">Akkar</option>
+                  <option value="south-lebanon">South Lebanon</option>
+                  <option value="nabatieh">Nabatieh</option>
+                  <option value="bekaa">Bekaa</option>
+                  <option value="baalbek-hermel">Baalbek-Hermel</option>
+                </select>
+
+                <label for="time">Time Period</label>
+                <select id="time" name="time">
+                    <option value="week">Last Week</option>
+                    <option value="month">Last Month</option>
+                    <option value="year">Last Year</option>
+                </select>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFA Verification</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Multi-Factor Authentication</h1>
+    </header>
+    <main>
+        <section class="form-section">
+            <h2>Verify MFA Code</h2>
+            <form method="POST" action="/verify_mfa">
+                <input type="hidden" name="email" value="{{ email }}">
+                <label for="mfa_code">MFA Code</label>
+                <input type="text" id="mfa_code" name="mfa_code" required>
+                <button type="submit">Verify</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

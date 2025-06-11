@@ -1,0 +1,120 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Request</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="document.html">Document Request</a></li>
+              <li><a href="council-info.html">Council & Purchases</a></li>
+              <li><a href="careers.html">Careers and Volunteers</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="login.html">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="review-section">
+            <h2>Review Request</h2>
+            <form id="reviewForm">
+                <div id="requestDetails">
+                    <!-- Request details will be populated by JavaScript -->
+                </div>
+                <label for="feedback">Feedback:</label>
+                <textarea id="feedback" name="feedback" required></textarea>
+                <label for="status">Status:</label>
+                <select id="status" name="status" required>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Pending">Pending</option>
+                </select>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const requestId = urlParams.get('id');
+    
+        async function fetchRequestDetails() {
+            try {
+                const response = await fetch(`/review_request/${requestId}`);
+                const requestDetails = await response.json();
+    
+                if (requestDetails.error) {
+                    document.getElementById('requestDetails').innerHTML = `<p>Error: ${requestDetails.error}</p>`;
+                    return;
+                }
+    
+                const requestDetailsDiv = document.getElementById('requestDetails');
+                requestDetailsDiv.innerHTML = `
+                    <p><strong>Request ID:</strong> ${requestDetails.id}</p>
+                    <p><strong>Requester Name:</strong> ${requestDetails.full_name}</p>
+                    <p><strong>Address:</strong> ${requestDetails.address}</p>
+                    <p><strong>Phone Number:</strong> ${requestDetails.phone_number}</p>
+                    <p><strong>Parcel Number:</strong> ${requestDetails.parcel_number}</p>
+                    <p><strong>Unit Number:</strong> ${requestDetails.unit_number}</p>
+                    <p><strong>Cadastral Zone:</strong> ${requestDetails.cadastral_zone}</p>
+                    <p><strong>Payment Method:</strong> ${requestDetails.payment_method}</p>
+                    <p><strong>Submission Date:</strong> ${requestDetails.submitted_at}</p>
+                    <p><strong>Status:</strong> ${requestDetails.status}</p>
+                    <p><strong>Files:</strong></p>
+                    <ul id="fileList"></ul>
+                `;
+    
+                // Populate file list
+                const fileList = document.getElementById('fileList');
+                requestDetails.files.forEach(file => {
+                    const fileItem = document.createElement('li');
+                    fileItem.innerHTML = `<a href="${file.file_url}" target="_blank">${file.file_name}</a>`;
+                    fileList.appendChild(fileItem);
+                });
+    
+            } catch (error) {
+                console.error('Error fetching request details:', error);
+            }
+        }
+    
+        document.getElementById('reviewForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+    
+            const feedback = document.getElementById('feedback').value;
+            const status = document.getElementById('status').value;
+    
+            try {
+                const response = await fetch(`/review_request/${requestId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `feedback=${encodeURIComponent(feedback)}&status=${encodeURIComponent(status)}`
+                });
+    
+                const result = await response.json();
+                if (result.message) {
+                    alert(result.message);
+                    window.location.href = 'employee_dashboard.html';
+                } else {
+                    alert(result.error);
+                }
+            } catch (error) {
+                console.error('Error submitting feedback:', error);
+            }
+        });
+    
+        // Fetch request details when the page loads
+        fetchRequestDetails();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,148 @@
+[
+    {
+      "shopCode": "LB-00100015",
+      "shopName": "UCCM-Ramlet Al Baida",
+      "type": "Chain",
+      "statusContract": "Contracted",
+      "so": "BMLS SO",
+      "governorate": "Beirut",
+      "district": "Beirut",
+      "village": "Raoucheh",
+      "location": "Near Egyptian embassy , al Rassal BLDG",
+      "latitude": 33.881856,
+      "longitude": 35.481792
+    },
+    {
+      "shopCode": "LB-00900968",
+      "shopName": "Le Charcutier - Antelias",
+      "type": "Chain",
+      "statusContract": "Contracted",
+      "so": "BMLS SO",
+      "governorate": "Mount Lebanon",
+      "district": "El Meten",
+      "village": "Antelias",
+      "location": "Highway",
+      "latitude": 33.9116445,
+      "longitude": 35.5818471
+    },
+    {
+      "shopCode": "LB-01501071",
+      "shopName": "Abou tony market",
+      "type": "Shop",
+      "statusContract": "Contracted",
+      "so": "Bekaa SO",
+      "governorate": "Baalbek-El Hermel",
+      "district": "Baalbek",
+      "village": "Deir El Ahmar",
+      "location": "Bechouat main road",
+      "latitude": 34.14925,
+      "longitude": 36.13387
+    },
+    {
+      "shopCode": "LB-01301092",
+      "shopName": "Hlaliyeh Market",
+      "type": "Shop",
+      "statusContract": "Contracted",
+      "so": "BMLS SO",
+      "governorate": "South",
+      "district": "Saida",
+      "village": "Hlaliye Saida",
+      "location": "Hlaliyeh main road",
+      "latitude": 33.5629188,
+      "longitude": 35.3870475
+    },
+    {
+      "shopCode": "LB-01301095",
+      "shopName": "Nomairy Market",
+      "type": "Shop",
+      "statusContract": "Contracted",
+      "so": "BMLS SO",
+      "governorate": "South",
+      "district": "Saida",
+      "village": "Saida",
+      "location": "Saida wistaneh",
+      "latitude": 33.5728987,
+      "longitude": 35.3824363
+    },
+    {
+      "shopCode": "LB-00700528",
+      "shopName": "Supermarket Nizar",
+      "type": "Shop",
+      "statusContract": "Contracted",
+      "so": "BMLS SO",
+      "governorate": "Mount Lebanon",
+      "district": "Baabda",
+      "village": "Borj el Brajne",
+      "location": "Al Ramel Al Ali Airport Road",
+      "latitude": 33.841331,
+      "longitude": 35.497665
+    },
+    {
+      "shopCode": "LB-00100024",
+      "shopName": "UCCM-Sabra",
+      "type": "Chain",
+      "statusContract": "Contracted",
+      "so": "BMLS SO",
+      "governorate": "Beirut",
+      "district": "Beirut",
+      "village": "Tariq El Jdide",
+      "location": "Hassan Khaled street",
+      "latitude": 33.869846,
+      "longitude": 35.503232
+    },
+    {
+      "shopCode": "LB-01800644",
+      "shopName": "Supermarket Al Iman",
+      "type": "Shop",
+      "statusContract": "Contracted",
+      "so": "Bekaa SO",
+      "governorate": "Bekaa",
+      "district": "West Bekaa",
+      "village": "El Marj",
+      "location": "rafic hariri street next to al walid camp",
+      "latitude": 33.766755,
+      "longitude": 35.879658
+    },
+    {
+      "shopCode": "LB-01300171",
+      "shopName": "Hebley Li Tamween Al Aeely Stores",
+      "type": "Shop",
+      "statusContract": "Contracted",
+      "so": "BMLS SO",
+      "governorate": "South",
+      "district": "Saida",
+      "village": "Saida",
+      "location": "Ghassan Hammoud Neighborhood",
+      "latitude": 33.55965586,
+      "longitude": 35.3768393
+    },
+    {
+      "shopCode": "LB-00100022",
+      "shopName": "Mini Market Al Jowlani",
+      "type": "Shop",
+      "statusContract": "Contracted",
+      "so": "BMLS SO",
+      "governorate": "Beirut",
+      "district": "Beirut",
+      "village": "Tariq El Jdide",
+      "location": "ard jaloul, near al hariri medical center",
+      "latitude": 33.865936,
+      "longitude": 35.501143
+    },
+
+  
+    {
+      "shopCode": "LB-00901093",
+      "shopName": "J&M Joseph Maroun Market",
+      "type": "Shop",
+      "statusContract": "Contracted",
+      "so": "BMLS SO",
+      "governorate": "Mount Lebanon",
+      "district": "El Meten",
+      "village": "Beit meri",
+      "location": "Beit meri main road ain el jdide maroun building",
+      "latitude": 33.8635991,
+      "longitude": 35.6029033
+    }
+  ]
+  

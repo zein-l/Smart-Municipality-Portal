@@ -1,0 +1,75 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        async function handleRegistration(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formData = new FormData(event.target);
+
+            // Convert form data to JSON
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                if (response.ok) {
+                    // Redirect to success page
+                    window.location.href = '/success';
+                } else {
+                    const error = await response.json();
+                    document.getElementById('error-message').innerText = error.error || "An unexpected error occurred.";
+                }
+            } catch (err) {
+                document.getElementById('error-message').innerText = "An unexpected error occurred.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Smart Municipality</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>User Registration</h2>
+            <form id="registrationForm" onsubmit="handleRegistration(event)">
+                <div id="error-message" style="color: red;"></div>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+
+                <button type="submit">Register</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Municipality. All rights reserved.</p>
+    </footer>
+</body>
+</html>

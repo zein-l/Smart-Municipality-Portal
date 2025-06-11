@@ -1,0 +1,151 @@
+
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب إفادة أو بيان</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+        .documents-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 8px;
+        }
+        .submit-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .submit-section button {
+            background: #0288d1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .submit-section button:hover {
+            background: #0277bd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul><li><a href="{{ url_for('home') }}">الرئيسية</a></li>
+                <li><a href="{{ url_for('document_request') }}">طلب المستندات</a></li>
+                <li><a href="{{ url_for('contact') }}">اتصل بنا</a></li>
+                <li><a href="{{ url_for('user_auth.login_register') }}">تسجيل الدخول</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h2>طلب إفادة أو بيان</h2>
+        <form action="{{ url_for('submit_document_request') }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="full-name">المستدعي</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+            <div class="form-group">
+                <label for="relation">صفة المستدعي</label>
+                <select id="relation" name="relation" required>
+                    <option value="owner">مالك</option>
+                    <option value="tenant">مستأجر</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="property-number">رقم العقار</label>
+                <input type="text" id="property-number" name="property-number" required>
+            </div>
+            <div class="form-group">
+                <label for="section-number">رقم القسم</label>
+                <input type="text" id="section-number" name="section-number" required>
+            </div>
+            <div class="form-group">
+                <label for="area">المنطقة العقارية</label>
+                <input type="text" id="area" name="area" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">رقم الهاتف</label>
+                <input type="text" id="phone-number" name="phone-number" required>
+            </div>
+            <div class="form-group">
+                <label for="disabled-person">المعوق السيد</label>
+                <input type="text" id="disabled-person" name="disabled-person" required>
+            </div>
+            <div class="form-group">
+                <label for="relationship">نوعية القرابة</label>
+                <input type="text" id="relationship" name="relationship" required>
+            </div>
+            <div class="documents-section">
+                <h3>المستندات المرفقة</h3>
+                <div class="form-group">
+                    <label for="id-card">صورة عن هوية المعوق</label>
+                    <input type="file" id="id-card" name="id-card" accept=".pdf, .jpg, .png" required>
+                </div>
+                <div class="form-group">
+                    <label for="disability-card">صورة عن بطاقة المعوق الشخصية</label>
+                    <input type="file" id="disability-card" name="disability-card" accept=".pdf, .jpg, .png" required>
+                </div>
+                <div class="form-group">
+                    <label for="social-affairs-statement">إفادة من وزارة الشؤون الاجتماعية</label>
+                    <input type="file" id="social-affairs-statement" name="social-affairs-statement" accept=".pdf, .jpg, .png" required>
+                </div>
+                <div class="form-group">
+                    <label for="family-record">إخراج قيد عائلي أو إفادة من المختار</label>
+                    <input type="file" id="family-record" name="family-record" accept=".pdf, .jpg, .png" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="notes">ملاحظات</label>
+                <textarea id="notes" name="notes"></textarea>
+            </div>
+            <div class="submit-section">
+                <button type="submit">إرسال الطلب</button>
+            </div>
+        </form>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 البلدية الذكية. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>

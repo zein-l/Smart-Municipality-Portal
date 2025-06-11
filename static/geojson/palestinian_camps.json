@@ -1,0 +1,99 @@
+[
+    {
+      "camp": "El Buss",
+      "governorate": "South",
+      "caza": "Sour",
+      "cadastral": "Abbassyat",
+      "lat": 33.2725,
+      "long": 35.21
+    },
+    {
+      "camp": "Rashidieh",
+      "governorate": "South",
+      "caza": "Sour",
+      "cadastral": "Aain Baal",
+      "lat": 33.236667,
+      "long": 35.218056
+    },
+    {
+      "camp": "Burj el Shemali",
+      "governorate": "South",
+      "caza": "Sour",
+      "cadastral": "Borj Ech-Chemali",
+      "lat": 33.266667,
+      "long": 35.2
+    },
+    {
+      "camp": "Ein el Hilweh",
+      "governorate": "South",
+      "caza": "Saida",
+      "cadastral": "Darbessim",
+      "lat": 33.543611,
+      "long": 35.378056
+    },
+    {
+      "camp": "Mieh Mieh",
+      "governorate": "South",
+      "caza": "Saida",
+      "cadastral": "Qraiyet Saida",
+      "lat": 33.541667,
+      "long": 35.391389
+    },
+    {
+      "camp": "Mar Elias",
+      "governorate": "Beirut",
+      "caza": "Beirut",
+      "cadastral": "Moussaytbeh",
+      "lat": 33.876907,
+      "long": 35.487712
+    },
+    {
+      "camp": "Shatila",
+      "governorate": "Mount Lebanon",
+      "caza": "Baabda",
+      "cadastral": "Chiah",
+      "lat": 33.86285,
+      "long": 35.498381
+    },
+    {
+      "camp": "Borj El Barajnah",
+      "governorate": "Mount Lebanon",
+      "caza": "Baabda",
+      "cadastral": "Chouaifat Amroussyat",
+      "lat": 33.848333,
+      "long": 35.503333
+    },
+    {
+      "camp": "Dbayeh",
+      "governorate": "Mount Lebanon",
+      "caza": "El Meten",
+      "cadastral": "Zouk-Khrab",
+      "lat": 33.942347,
+      "long": 35.609628
+    },
+    {
+      "camp": "Beddawi",
+      "governorate": "North",
+      "caza": "El Minieh-Dennie",
+      "cadastral": "Mejdlaya",
+      "lat": 34.450178,
+      "long": 35.869214
+    },
+    {
+      "camp": "Nahr el Bared",
+      "governorate": "Akkar",
+      "caza": "Akkar",
+      "cadastral": "Zouk Bhanine",
+      "lat": 34.513056,
+      "long": 35.961111
+    },
+    {
+      "camp": "Wavell",
+      "governorate": "Baalbek-El Hermel",
+      "caza": "Baalbek",
+      "cadastral": "Douress",
+      "lat": 33.998964,
+      "long": 36.193183
+    }
+  ]
+  

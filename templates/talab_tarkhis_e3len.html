@@ -1,0 +1,128 @@
+
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب ترخيص للإعلان</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            direction: rtl;
+            text-align: right;
+            font-family: Arial, sans-serif;
+        }
+        label, input, select {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">الرئيسية</a></li>
+                <li><a href="{{ url_for('document_request') }}">طلب المستندات</a></li>
+                <li><a href="{{ url_for('contact') }}">اتصل بنا</a></li>
+                <li><a href="{{ url_for('user_auth.login_register') }}">تسجيل الدخول</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>طلب ترخيص للإعلان الدائم والمؤقت</h2>
+            <form action="{{ url_for('submit_ad_license') }}" method="POST" enctype="multipart/form-data">
+                
+                <label for="full-name">الاسم الكامل</label>
+                <input type="text" id="full-name" name="full-name" required>
+
+                <label for="phone-number">رقم الهاتف</label>
+                <input type="text" id="phone-number" name="phone-number" required>
+
+                <label for="address">العنوان</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="property-number">رقم العقار</label>
+                <input type="number" id="property-number" name="property-number" required>
+
+                <label for="zone">المنطقة العقارية</label>
+                <input type="text" id="zone" name="zone" required>
+
+                <h3>المستندات المطلوبة</h3>
+
+                <label for="property-statement">إفادة عقارية للعقار لا يعود تاريخها لأكثر من ثلاثة أشهر</label>
+                <input type="file" id="property-statement" name="property-statement" accept=".pdf, .jpg, .png" required>
+
+                <label for="planning-statement">إفادة ارتفاق وتخطيط لا يعود تاريخها لأكثر من ثلاثة أشهر</label>
+                <input type="file" id="planning-statement" name="planning-statement" accept=".pdf, .jpg, .png" required>
+
+                <label for="insurance-policy">بوليصة تأمين للوحة ضد الغير</label>
+                <input type="file" id="insurance-policy" name="insurance-policy" accept=".pdf, .jpg, .png" required>
+
+                <label for="energy-proof">مستند يثبت عدم إضاءة اللوحة بواسطة التعدي على شبكات الطاقة</label>
+                <input type="file" id="energy-proof" name="energy-proof" accept=".pdf, .jpg, .png">
+
+                <label for="owner-approval">عقد مع صاحب العقار أو موافقة منه مسجلة لدى الكاتب العدل</label>
+                <input type="file" id="owner-approval" name="owner-approval" accept=".pdf, .jpg, .png">
+
+                <label for="ad-map">ثلاث نسخ عن خريطة الموقع بمقياس 1/100 وخريطة اللوحة بمقياس 1/20</label>
+                <input type="file" id="ad-map" name="ad-map" accept=".pdf, .jpg, .png">
+
+                <label for="building-front">ثلاث نسخ عن مصور واجهة البناء بمقياس 1/50</label>
+                <input type="file" id="building-front" name="building-front" accept=".pdf, .jpg, .png">
+
+                <label for="photo">صورة فوتوغرافية للموقع</label>
+                <input type="file" id="photo" name="photo" accept=".pdf, .jpg, .png">
+
+                <h3>رسوم الترخيص</h3>
+
+                <label for="ad-type">نوع الإعلان</label>
+                <select id="ad-type" name="ad-type" required>
+                    <option value="permanent">إعلان دائم</option>
+                    <option value="temporary">إعلان مؤقت</option>
+                </select>
+
+                <label for="ad-size">مساحة الإعلان بالمتر المربع</label>
+                <input type="number" id="ad-size" name="ad-size" required>
+
+                <label for="payment-method">اختر طريقة الدفع</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="credit-card">بطاقة ائتمان</option>
+                    <option value="bank-transfer">تحويل بنكي</option>
+                </select>
+
+                <div id="credit-card-fields" style="display: none;">
+                    <label for="card-number">رقم البطاقة الائتمانية</label>
+                    <input type="text" id="card-number" name="card-number" maxlength="16" placeholder="1234 5678 9012 3456">
+
+                    <label for="expiry-date">تاريخ انتهاء الصلاحية</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY">
+
+                    <label for="cvc">CVC</label>
+                    <input type="text" id="cvc" name="cvc" maxlength="3" placeholder="123">
+                </div>
+
+                <button type="submit">إرسال الطلب والدفع</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 بلدية المطيلب. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        document.getElementById('payment-method').addEventListener('change', function() {
+            const creditCardFields = document.getElementById('credit-card-fields');
+            if (this.value === 'credit-card') {
+                creditCardFields.style.display = 'block';
+            } else {
+                creditCardFields.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

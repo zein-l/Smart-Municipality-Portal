@@ -1,0 +1,119 @@
+
+<html>
+<head>
+    <title>Customer Management</title>
+</head>
+<body>
+    <h1>Customer Management</h1>
+    <input type="text" id="search" onkeyup="filterTable()" placeholder="Search for names..">
+    <table id="customerTable" border="1">
+        <thead>
+            <tr>
+                <th>CustomerID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>CountryCode</th>
+                <th>Budget</th>
+                <th>Used</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr onclick="selectRow(this)">
+                <td>C001</td>
+                <td>Win Weerachai</td>
+                <td>win.weerachai@thaicreate.com</td>
+                <td>TH</td>
+                <td>1000000</td>
+                <td>600000</td>
+            </tr>
+            <tr onclick="selectRow(this)">
+                <td>C002</td>
+                <td>John Smith</td>
+                <td>john.smith@thaicreate.com</td>
+                <td>EN</td>
+                <td>2000000</td>
+                <td>800000</td>
+            </tr>
+            <tr onclick="selectRow(this)">
+                <td>C003</td>
+                <td>Jame Born</td>
+                <td>jame.born@thaicreate.com</td>
+                <td>US</td>
+                <td>3000000</td>
+                <td>300000</td>
+            </tr>
+            <tr onclick="selectRow(this)">
+                <td>C004</td>
+                <td>Chalee Angel</td>
+                <td>chalee.angel@thaicreate.com</td>
+                <td>US</td>
+                <td>4000000</td>
+                <td>100000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form id="customerForm" onsubmit="return confirmChanges()">
+        <p>CustomerID: <input type="text" id="formCustomerID" readonly></p>
+        <p>Name: <input type="text" id="formName" readonly></p>
+        <p>Email: <input type="text" id="formEmail" readonly></p>
+        <p>CountryCode: <input type="text" id="formCountryCode" readonly></p>
+        <p>Budget: <input type="text" id="formBudget" readonly></p>
+        <p>Used: <input type="number" id="formUsed" required></p>
+        <input type="submit" value="OK">
+    </form>
+
+    <script type="text/javascript">
+        function filterTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("customerTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
+        }
+
+        function selectRow(row) {
+            var table = document.getElementById("customerTable");
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].style.backgroundColor = "";
+            }
+            row.style.backgroundColor = "blue";
+            row.style.color = "white";
+
+            document.getElementById("formCustomerID").value = row.cells[0].innerText;
+            document.getElementById("formName").value = row.cells[1].innerText;
+            document.getElementById("formEmail").value = row.cells[2].innerText;
+            document.getElementById("formCountryCode").value = row.cells[3].innerText;
+            document.getElementById("formBudget").value = row.cells[4].innerText;
+            document.getElementById("formUsed").value = row.cells[5].innerText;
+        }
+
+        function confirmChanges() {
+            var used = document.getElementById("formUsed").value;
+            if (confirm("Are you sure you want to update the used budget to " + used + "?")) {
+                var table = document.getElementById("customerTable");
+                for (var i = 1; i < table.rows.length; i++) {
+                    if (table.rows[i].style.backgroundColor === "blue") {
+                        table.rows[i].cells[5].innerText = used;
+                        break;
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>

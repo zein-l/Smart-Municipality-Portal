@@ -1,0 +1,114 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Municipality - Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    {% set lang = request.args.get('lang', 'en') %}
+    <header>
+        <nav>
+
+            <div class="language-selector">
+                <button class="language-dropdown" id="languageDropdownButton">
+                    Select Language
+                </button>
+                <div class="dropdown-menu">
+                    <a href="?lang=en" {% if lang == 'en' %}style="font-weight: bold;"{% endif %}>🇬🇧 English</a>
+                    <a href="?lang=ar" {% if lang == 'ar' %}style="font-weight: bold;"{% endif %}>🇦🇪 العربية</a>
+                    <a href="?lang=fr" {% if lang == 'fr' %}style="font-weight: bold;"{% endif %}>🇫🇷 Français</a>
+                    <a href="?lang=hy" {% if lang == 'hy' %}style="font-weight: bold;"{% endif %}>🇦🇲 Հայերեն</a>
+                </div>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('home', lang=request.args.get('lang')) }}">Home</a></li>
+                <li><a href="{{ url_for('document_request', lang=request.args.get('lang')) }}">Document Request</a></li>
+                <li><a href="{{ url_for('council_purchases') }}">Council & Purchases</a></li>
+                <li><a href="{{ url_for('careers_volunteers', lang=request.args.get('lang')) }}">Careers and Volunteers</a></li>
+                <li><a href="{{ url_for('contact', lang=request.args.get('lang')) }}">Contact</a></li>
+                <li><a href="#" onclick="logoutAndClear()">Logout</a></li>
+            </ul>
+
+            
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to the Smart Municipality</h1>
+            <p>Your gateway to smarter services</p>
+        </section>
+        <section class="quick-access">
+            <h2>Quick Access</h2>
+            <div class="buttons">
+                <button onclick="location.href='/complaint?lang={{ request.args.get('lang','en') }}'">Submit a Complaint</button>
+                <button onclick="location.href='/tracker?lang={{ request.args.get('lang','en') }}'">Check My Requests</button>
+                <button onclick="location.href='/map?lang={{ request.args.get('lang','en') }}'">Live IDP and Immigrant Map</button>
+                <button onclick="location.href='/tourism?lang={{ request.args.get('lang','en') }}'">Tourism Information</button>
+            </div>
+        </section>
+
+        <section class="news">
+            <h2>Latest News & Updates</h2>
+            <p>Stay informed with the latest updates from your municipality</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Municipality. All Rights Reserved.</p>
+    </footer>
+
+   
+<div class="chatbot-container">
+    
+    <button class="chatbot-button" onclick="toggleChat()">
+        <img src="/static/chat-icon.png" alt="Chatbot">
+    </button>
+
+  
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chat-header">
+            <span>Smart Municipality Chatbot</span>
+            <button class="close-btn" onclick="toggleChat()">&times;</button>
+        </div>
+        
+
+        <div class="chat-messages" id="chatMessages">
+            <p class="bot-message">👋 Hello! How can I assist you today?</p>
+        </div>
+
+        
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+<script>
+    // This will make logged-in username available to JS
+    const LOGGED_IN_USER = "{{ session['username'] }}";  // or session['user_id']
+  </script>
+<script>
+    function logoutAndClear() {
+        localStorage.removeItem("chat_history");
+        localStorage.removeItem("current_user");
+    
+        // Then redirect manually
+        window.location.href = "{{ url_for('user_auth.login_register') }}";
+    }
+    </script>
+
+<script src="/static/chatbot.js"></script>
+
+<script>
+    function changeLanguage() {
+        let selectedLang = document.getElementById("language-select").value;
+        let currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set("lang", selectedLang);
+        window.location.href = currentUrl.toString();
+    }
+    </script>
+</body>
+</html>
