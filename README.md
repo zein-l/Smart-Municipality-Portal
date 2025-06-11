@@ -24,3 +24,48 @@ This project was developed as a Final Year Project at the American University of
 ## Architecture
 
 The project uses a modular microservices architecture with Python Flask as the backend framework.
+
+**Install dependencies**
+
+pip install -r requirements.txt
+
+**Run the application**
+
+python app.py
+
+**Access the platform**
+
+http://127.0.0.1:5000/
+
+
+## Testing and Validation
+
+- Manual testing was performed across multiple browsers (Chrome, Firefox).
+- API testing was done using Postman.
+- Features tested include registration, login, document submission, complaint filing, chatbot queries, multilingual rendering, and map filtering.
+
+## Future Work
+
+- Switch to a production-grade database (e.g., PostgreSQL or MySQL)
+- Integrate a custom NLP model for enhanced chatbot performance
+- Add analytics dashboard for municipality staff
+- Improve accessibility (screen reader, contrast, etc.)
+- Fully deploy to cloud with CI/CD
+
+
+## Tools and Technologies
+
+- Python Flask (backend)
+- SQLite (local database)
+- HTML/CSS/JavaScript (frontend)
+- Leaflet.js (interactive map)
+- Google Translate API (multilingual support)
+- Postman (API testing)
+- Git and GitHub (version control)
+
+
+
+
+
+
+
